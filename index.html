@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ja"><head>
+<html lang="ja">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>ガチャシミュレーター</title>
@@ -71,12 +72,6 @@
 
     .btn:active {
       transform: scale(0.97);
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
     }
 
     main {
@@ -186,7 +181,7 @@
     .result-inline-box {
       display: none;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       background: var(--panel);
       border: 2px solid var(--accent);
       border-radius: 16px;
@@ -211,11 +206,11 @@
     .summary-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 7px;
+      gap: 8px;
     }
 
     .summary-grid.single {
-      grid-template-columns: minmax(140px, 200px);
+      grid-template-columns: minmax(170px, 240px);
       justify-content: center;
     }
 
@@ -224,30 +219,45 @@
         grid-template-columns: repeat(2, 1fr);
       }
       .summary-grid.single {
-        grid-template-columns: minmax(150px, 210px);
+        grid-template-columns: minmax(180px, 240px);
       }
     }
 
     .sum-card {
-      border-radius: 10px;
+      border-radius: 12px;
       background: var(--panel-2);
       border: 2px solid #35405c;
-      padding: 6px;
+      padding: 7px;
+      min-height: 210px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      justify-content: space-between;
+      gap: 6px;
     }
 
-    .sum-card.SSR { border-color: var(--ssr); background: linear-gradient(180deg, rgba(255,212,59,0.16), #121620); }
-    .sum-card.SR  { border-color: var(--sr);  background: linear-gradient(180deg, rgba(233,236,239,0.12), #121620); }
-    .sum-card.R   { border-color: var(--r);   background: linear-gradient(180deg, rgba(217,130,43,0.12), #121620); }
+    .sum-card.SSR {
+      border-color: var(--ssr);
+      background: linear-gradient(180deg, rgba(255, 212, 59, 0.16), #121620);
+    }
+
+    .sum-card.SR {
+      border-color: var(--sr);
+      background: linear-gradient(180deg, rgba(233, 236, 239, 0.12), #121620);
+    }
+
+    .sum-card.R {
+      border-color: var(--r);
+      background: linear-gradient(180deg, rgba(217, 130, 43, 0.12), #121620);
+    }
 
     .sum-img {
       width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border-radius: 6px;
+      flex: 1;
+      min-height: 155px;
+      max-height: 240px;
+      object-fit: contain;
+      border-radius: 8px;
       background: #0c0f16;
     }
 
@@ -255,7 +265,8 @@
       font-size: 11px;
       font-weight: 800;
       text-align: center;
-      word-break: break-all;
+      line-height: 1.3;
+      word-break: break-word;
     }
 
     .gacha-fullscreen {
@@ -278,7 +289,8 @@
     .full-video {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      background: #05070c;
       display: none;
     }
 
@@ -308,8 +320,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 14px;
-      padding: 24px 16px;
+      gap: 12px;
+      padding: 18px 14px;
       cursor: pointer;
       user-select: none;
     }
@@ -326,34 +338,34 @@
     }
 
     .hero-card {
-      width: 100%;
-      max-width: 310px;
-      aspect-ratio: 3 / 4;
-      border-radius: 18px;
+      width: min(92vw, 440px);
+      height: min(74dvh, 620px);
+      border-radius: 20px;
       background: #161c2b;
       border: 3px solid #35405c;
-      padding: 12px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
+      gap: 8px;
       animation: cardPop 0.2s ease-out;
     }
 
     @keyframes cardPop {
-      from { transform: scale(0.92); opacity: 0.4; }
+      from { transform: scale(0.94); opacity: 0.45; }
       to { transform: scale(1); opacity: 1; }
     }
 
     .hero-card.SSR {
       border-color: var(--ssr);
-      box-shadow: 0 0 30px rgba(255, 212, 59, 0.52);
+      box-shadow: 0 0 32px rgba(255, 212, 59, 0.52);
       background: linear-gradient(180deg, rgba(255, 212, 59, 0.24), #151924);
     }
 
     .hero-card.SR {
       border-color: var(--sr);
-      box-shadow: 0 0 22px rgba(233, 236, 239, 0.36);
+      box-shadow: 0 0 24px rgba(233, 236, 239, 0.36);
       background: linear-gradient(180deg, rgba(233, 236, 239, 0.16), #151924);
     }
 
@@ -366,23 +378,23 @@
       width: 100%;
       flex: 1;
       min-height: 0;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 12px;
       background: #0c0f16;
     }
 
     .hero-rarity {
-      margin-top: 10px;
       font-size: 14px;
       font-weight: 900;
+      line-height: 1.2;
     }
 
     .hero-name {
-      margin-top: 2px;
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 900;
       text-align: center;
-      word-break: break-all;
+      line-height: 1.25;
+      word-break: break-word;
     }
 
     .tap-next-hint {
@@ -421,13 +433,31 @@
 
     .log-item {
       display: flex;
-      flex-direction: column;
-      gap: 3px;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
       background: var(--panel-2);
       border: 1px solid #252d40;
       border-radius: 10px;
       padding: 10px 12px;
       font-size: 13px;
+    }
+
+    .log-thumb {
+      width: 36px;
+      height: 48px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #0c0f16;
+      flex-shrink: 0;
+    }
+
+    .log-body {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
     }
 
     .log-line-1 {
@@ -484,142 +514,12 @@
       font-size: 13px;
       padding: 18px 0;
     }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.82);
-      z-index: 60;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 14px;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-sheet {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      width: 100%;
-      max-width: 620px;
-      max-height: 88dvh;
-      overflow-y: auto;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .modal-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .modal-head h2 {
-      margin: 0;
-      font-size: 17px;
-      font-weight: 800;
-    }
-
-    .sec-title {
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .sec-note {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 4px;
-    }
-
-    .rarity-video-block {
-      background: var(--panel-2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .add-card-box {
-      background: var(--panel-2);
-      border: 1px solid var(--accent);
-      border-radius: 12px;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .add-card-row {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .add-card-row select,
-    .add-card-row input[type="text"] {
-      background: var(--panel);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 9px 10px;
-      font-size: 14px;
-    }
-
-    .add-card-row input[type="text"] {
-      flex: 1;
-      min-width: 150px;
-    }
-
-    textarea {
-      width: 100%;
-      min-height: 110px;
-      background: var(--panel-2);
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 10px;
-      font-size: 12px;
-      font-family: monospace;
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .modal-bottom-open {
-      margin-top: 8px;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-    }
-
-    .open-page-btn {
-      width: 100%;
-      padding: 14px 16px;
-      font-size: 15px;
-      font-weight: 800;
-      border-radius: 12px;
-    }
   </style>
 </head>
 <body>
 
   <header>
     <h1>ガチャシミュレーター</h1>
-    <button class="btn" id="openEditorBtn" type="button">編集・素材管理</button>
   </header>
 
   <main>
@@ -654,37 +554,7 @@
         <span class="summary-title">ガチャ結果</span>
         <button class="btn" id="closeResultBtn" type="button">閉じる</button>
       </div>
-      <div class="summary-grid" id="summaryGrid"><div class="sum-card R">
-            <img class="sum-img" src="./jpg_cards/%E6%A5%A0%E6%9C%A8%20%E3%81%82%E3%82%8A%E3%81%99.jpg" alt="楠木 ありす">
-            <div class="sum-label" style="color:var(--r)">[R] 楠木 ありす</div>
-          </div><div class="sum-card R">
-            <img class="sum-img" src="./jpg_cards/%E4%B8%8E%E9%82%A3%E5%B6%BA%20%E9%87%8C%E8%8F%9C.jpg" alt="与那嶺 里菜">
-            <div class="sum-label" style="color:var(--r)">[R] 与那嶺 里菜</div>
-          </div><div class="sum-card R">
-            <img class="sum-img" src="./jpg_cards/%E3%80%90%E9%9B%A8%E3%80%91%E5%B0%8F%E9%B3%A5%E9%81%8A%20%E8%87%AA%E7%94%B1.jpg" alt="【雨】小鳥遊 自由">
-            <div class="sum-label" style="color:var(--r)">[R] 【雨】小鳥遊 自由</div>
-          </div><div class="sum-card R">
-            <img class="sum-img" src="./jpg_cards/%E3%80%90%E6%8C%A8%E6%8B%B6%E3%80%91%E5%86%B7%E6%B3%89%20%E8%91%B5.jpg" alt="【挨拶】冷泉 葵">
-            <div class="sum-label" style="color:var(--r)">[R] 【挨拶】冷泉 葵</div>
-          </div><div class="sum-card R">
-            <img class="sum-img" src="./jpg_cards/%E5%AE%88%E8%B0%B7%20%E6%9C%88%E8%A9%A0.jpg" alt="守谷 月詠">
-            <div class="sum-label" style="color:var(--r)">[R] 守谷 月詠</div>
-          </div><div class="sum-card R">
-            <img class="sum-img" src="./jpg_cards/%E3%80%90%E5%8B%A7%E8%AA%98%E3%80%91%E9%9F%B3%E7%84%A1%20%E5%BE%8B.jpg" alt="【勧誘】音無 律">
-            <div class="sum-label" style="color:var(--r)">[R] 【勧誘】音無 律</div>
-          </div><div class="sum-card R">
-            <img class="sum-img" src="./jpg_cards/%E3%80%90%E4%BB%BB%E5%8B%99%E3%80%91%E9%81%8A%E4%BD%90%20%E9%B3%B4%E5%AD%90.jpg" alt="【任務】遊佐 鳴子">
-            <div class="sum-label" style="color:var(--r)">[R] 【任務】遊佐 鳴子</div>
-          </div><div class="sum-card R">
-            <img class="sum-img" src="./jpg_cards/%E3%80%90%E4%BB%BB%E5%8B%99%E3%80%91%E5%86%B7%E6%B3%89%20%E8%91%B5.jpg" alt="【任務】冷泉 葵">
-            <div class="sum-label" style="color:var(--r)">[R] 【任務】冷泉 葵</div>
-          </div><div class="sum-card R">
-            <img class="sum-img" src="./jpg_cards/%E3%80%90%E4%BB%BB%E5%8B%99%E3%80%91%E6%AD%A6%E7%94%B0%20%E8%99%8E%E5%8D%83%E4%BB%A3.jpg" alt="【任務】武田 虎千代">
-            <div class="sum-label" style="color:var(--r)">[R] 【任務】武田 虎千代</div>
-          </div><div class="sum-card SR">
-            <img class="sum-img" src="./jpg_cards/%E3%80%90%E5%88%9D%E5%A3%B2%E3%82%8A%E3%80%91%E7%91%A0%E7%92%83%E5%B7%9D%20%E6%98%A5%E4%B9%83.jpg" alt="【初売り】瑠璃川 春乃">
-            <div class="sum-label" style="color:var(--sr)">[SR] 【初売り】瑠璃川 春乃</div>
-          </div></div>
+      <div class="summary-grid" id="summaryGrid"></div>
     </section>
 
     <section class="box">
@@ -692,222 +562,63 @@
         <h2>SR以上 獲得ログ（最新10件）</h2>
         <span class="sync-badge" id="syncBadge">オンライン同期済み</span>
       </div>
-      <ul class="log-list" id="logList"><li class="log-item">
-            <div class="log-line-1">
-              <span class="tag tag-SR">SR</span>
-              <span class="log-card-name">【初売り】瑠璃川 春乃</span>
-            </div>
-            <div class="log-line-2">かにさんがGET!!</div>
-            <div class="log-line-3">11/26 18:23</div>
-          </li><li class="log-item">
-            <div class="log-line-1">
-              <span class="tag tag-SR">SR</span>
-              <span class="log-card-name">【騎士】楯野 望</span>
-            </div>
-            <div class="log-line-2">かにさんがGET!!</div>
-            <div class="log-line-3">11/26 15:47</div>
-          </li><li class="log-item">
-            <div class="log-line-1">
-              <span class="tag tag-SR">SR</span>
-              <span class="log-card-name">【お化け】桃世 もも</span>
-            </div>
-            <div class="log-line-2">かにさんがGET!!</div>
-            <div class="log-line-3">11/26 15:45</div>
-          </li><li class="log-item">
-            <div class="log-line-1">
-              <span class="tag tag-SSR">SSR</span>
-              <span class="log-card-name">【決意】南 智花</span>
-            </div>
-            <div class="log-line-2">かにさんがGET!!</div>
-            <div class="log-line-3">11/26 15:45</div>
-          </li><li class="log-item">
-            <div class="log-line-1">
-              <span class="tag tag-SR">SR</span>
-              <span class="log-card-name">【怪盗】生天目 つかさ</span>
-            </div>
-            <div class="log-line-2">かにさんがGET!!</div>
-            <div class="log-line-3">11/26 15:45</div>
-          </li><li class="log-item">
-            <div class="log-line-1">
-              <span class="tag tag-SR">SR</span>
-              <span class="log-card-name">SRキャラ04</span>
-            </div>
-            <div class="log-line-2">かにさんがGET!!</div>
-            <div class="log-line-3">11/26 14:57</div>
-          </li><li class="log-item">
-            <div class="log-line-1">
-              <span class="tag tag-SR">SR</span>
-              <span class="log-card-name">SRキャラ01</span>
-            </div>
-            <div class="log-line-2">かにさんがGET!!</div>
-            <div class="log-line-3">11/26 14:53</div>
-          </li><li class="log-item">
-            <div class="log-line-1">
-              <span class="tag tag-SR">SR</span>
-              <span class="log-card-name">SRキャラ02</span>
-            </div>
-            <div class="log-line-2">ゲストさんがGET!!</div>
-            <div class="log-line-3">11/25 14:23</div>
-          </li><li class="log-item">
-            <div class="log-line-1">
-              <span class="tag tag-SR">SR</span>
-              <span class="log-card-name">SRキャラ05</span>
-            </div>
-            <div class="log-line-2">ゲストさんがGET!!</div>
-            <div class="log-line-3">11/25 14:23</div>
-          </li><li class="log-item">
-            <div class="log-line-1">
-              <span class="tag tag-SR">SR</span>
-              <span class="log-card-name">SRキャラ03</span>
-            </div>
-            <div class="log-line-2">ゲストさんがGET!!</div>
-            <div class="log-line-3">11/25 14:10</div>
-          </li></ul>
+      <ul class="log-list" id="logList"></ul>
     </section>
   </main>
 
   <div class="gacha-fullscreen" id="gachaFullscreen">
     <button class="skip-btn" id="skipBtn" type="button">スキップ ▶▶</button>
-    <video class="full-video" id="gachaVideo" playsinline="" autoplay=""></video>
+    <video class="full-video" id="gachaVideo" playsinline autoplay></video>
 
     <div class="single-stage" id="singleStage">
-      <div class="step-counter" id="stepCounter">10 / 10</div>
-      <div class="hero-card SR" id="heroCard" style="">
-          <img class="hero-img" src="./jpg_cards/%E3%80%90%E5%88%9D%E5%A3%B2%E3%82%8A%E3%80%91%E7%91%A0%E7%92%83%E5%B7%9D%20%E6%98%A5%E4%B9%83.jpg" alt="【初売り】瑠璃川 春乃">
-          <div class="hero-rarity" style="color:var(--sr)">SR</div>
-          <div class="hero-name" style="color:var(--sr)">【初売り】瑠璃川 春乃</div>
-        </div>
+      <div class="step-counter" id="stepCounter">1 / 1</div>
+      <div class="hero-card R" id="heroCard"></div>
       <div class="tap-next-hint" id="tapNextHint">画面をタップして結果を見る</div>
     </div>
   </div>
 
-  <div class="modal active" id="editorModal">
-    <div class="modal-sheet">
-      <div class="modal-head">
-        <h2>編集・素材管理</h2>
-        <button class="btn" id="closeEditorBtn" type="button">閉じる</button>
-      </div>
-
-      <!-- ガチャへカードを追加（画像＋レアリティ＋キャラ名をそのまま登録・保持） -->
-      <div>
-        <div class="sec-title">ガチャにカードを追加（そのまま登録・保持）</div>
-        <div class="add-card-box">
-          <div class="add-card-row">
-            <select id="newCardRarity">
-              <option value="SSR">SSR</option>
-              <option value="SR">SR</option>
-              <option value="R" selected="">R</option>
-            </select>
-            <input id="newCardName" type="text" placeholder="キャラ名（画像選択で自動入力）">
-          </div>
-          <div class="btn-row">
-            <input type="file" id="newCardImage" accept="image/*">
-            <button class="btn btn-primary" id="addCardSaveBtn" type="button">追加して保存</button>
-          </div>
-          <div class="sec-note" id="addCardStatus">登録すると排出リストと画像がそのまま保存されます</div>
-        </div>
-      </div>
-
-      <div>
-        <div class="sec-title">レアリティごとの演出動画（排出最高レアに合わせて再生）</div>
-        <div class="rarity-video-block">
-          <div style="font-size:12px; font-weight:800; color:var(--ssr);">SSR演出動画</div>
-          <div class="btn-row">
-            <input type="file" id="videoInputSSR" accept="video/*" multiple="">
-            <button class="btn" id="clearVideoSSR" type="button">削除</button>
-          </div>
-          <div class="sec-note" id="videoStatusSSR">保存済み: 0本</div>
-        </div>
-
-        <div class="rarity-video-block">
-          <div style="font-size:12px; font-weight:800; color:var(--sr);">SR演出動画</div>
-          <div class="btn-row">
-            <input type="file" id="videoInputSR" accept="video/*" multiple="">
-            <button class="btn" id="clearVideoSR" type="button">削除</button>
-          </div>
-          <div class="sec-note" id="videoStatusSR">保存済み: 0本</div>
-        </div>
-
-        <div class="rarity-video-block">
-          <div style="font-size:12px; font-weight:800; color:var(--r);">R演出動画</div>
-          <div class="btn-row">
-            <input type="file" id="videoInputR" accept="video/*" multiple="">
-            <button class="btn" id="clearVideoR" type="button">削除</button>
-          </div>
-          <div class="sec-note" id="videoStatusR">保存済み: 0本</div>
-        </div>
-      </div>
-
-      <div>
-        <div class="sec-title">キャラ画像の読み込み・保存（ファイル名＝キャラ名）</div>
-        <div class="btn-row">
-          <input type="file" id="imageInput" accept="image/*" multiple="">
-          <button class="btn" id="clearImageBtn" type="button">画像を全削除</button>
-        </div>
-        <div class="sec-note" id="imageStatus">保存済み画像: 0枚</div>
-      </div>
-
-      <div>
-        <div class="sec-title">排出キャラリスト編集（1行につき「レアリティ,キャラ名」）</div>
-        <textarea id="poolText"></textarea>
-        <div class="btn-row" style="margin-top:8px;">
-          <button class="btn btn-primary" id="savePoolBtn" type="button">リストを保存</button>
-          <button class="btn" id="resetPoolBtn" type="button">初期リストに戻す</button>
-        </div>
-      </div>
-
-      <div>
-        <div class="sec-title">他の人にも同じ内容を反映する単体HTMLの書き出し</div>
-        <button class="btn btn-primary" id="exportBtn" type="button">素材・リスト込み index.html をダウンロード</button>
-        <div class="sec-note">※追加したカードや素材をHTMLに埋め込みます。</div>
-      </div>
-
-      <div class="modal-bottom-open">
-        <div class="sec-title">ページを開く</div>
-        <button class="btn btn-primary open-page-btn" id="openPageBtn" type="button">ページを開く</button>
-      </div>
-    </div>
-  </div>
-
-  <script id="embedded-bundle" type="application/json">{"pool":[{"rarity":"SSR","name":"【聖夜】雪白 ましろ"},{"rarity":"SSR","name":"【赤とんぼ】李 小蓮"},{"rarity":"SSR","name":"【夜プール】水無月 風子"},{"rarity":"SSR","name":"【パジャマ】冬樹 ノエル"},{"rarity":"SSR","name":"【寝起き】宍戸 結希"},{"rarity":"SSR","name":"【二人】間宮 千佳"},{"rarity":"SSR","name":"【新年】南条 恋"},{"rarity":"SSR","name":"【ひとくち】楯野 望"},{"rarity":"SSR","name":"【チア】音無 律"},{"rarity":"SSR","name":"【特級】七喜 ちひろ"},{"rarity":"SSR","name":"【桜】エレン"},{"rarity":"SSR","name":"【チョコ】風槍 ミナ"},{"rarity":"SSR","name":"【ゲーセン】守谷 月詠"},{"rarity":"SSR","name":"【水中】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【運動会】水瀬 薫子"},{"rarity":"SSR","name":"【騎士】エミリア"},{"rarity":"SSR","name":"【魔法祭】七喜 ちひろ"},{"rarity":"SSR","name":"【シャツ】瑠璃川 春乃"},{"rarity":"SSR","name":"【謹賀新年】南 智花"},{"rarity":"SSR","name":"【パジャマ】雀 明鈴"},{"rarity":"SSR","name":"【ウィドウ】水無月 風子"},{"rarity":"SSR","name":"【温泉宿】皇 絢香"},{"rarity":"SSR","name":"【思い出】瑠璃川 秋穂"},{"rarity":"SSR","name":"【童話】楠木 ありす"},{"rarity":"SSR","name":"【物語】服部 梓"},{"rarity":"SSR","name":"【パジャマ】相馬 レナ"},{"rarity":"SSR","name":"【再会】雪白 ましろ"},{"rarity":"SSR","name":"【チョコ】間宮 千佳"},{"rarity":"SSR","name":"【特級】東雲 アイラ"},{"rarity":"SSR","name":"【宇宙】宍戸 結希"},{"rarity":"SSR","name":"【出征】神凪 怜"},{"rarity":"SSR","name":"【ゲーセン】鳴海 純"},{"rarity":"SSR","name":"【うたた寝】冬樹 イヴ"},{"rarity":"SSR","name":"【秘密】東雲 アイラ"},{"rarity":"SSR","name":"【お月見】エミリア"},{"rarity":"SSR","name":"【激怒】与那嶺 里菜"},{"rarity":"SSR","name":"【運動】冬樹 ノエル"},{"rarity":"SSR","name":"【チェス】水無月 風子"},{"rarity":"SSR","name":"【ゲーセン】如月 天"},{"rarity":"SSR","name":"【鹿撃ち帽】白藤 香ノ葉"},{"rarity":"SSR","name":"【花粉】守谷 月詠"},{"rarity":"SSR","name":"【西部劇】円野 真理佳"},{"rarity":"SSR","name":"【自信作】南 智花"},{"rarity":"SSR","name":"【特級】冬樹 ノエル"},{"rarity":"SSR","name":"【チョコ】シャルロット"},{"rarity":"SSR","name":"【神社】神凪 怜"},{"rarity":"SSR","name":"【フェス】立華 卯衣"},{"rarity":"SSR","name":"【おりがむ】相馬 レナ"},{"rarity":"SSR","name":"【別府】霧塚 萌木"},{"rarity":"SSR","name":"【チョコ…】瑠璃川 春乃"},{"rarity":"SSR","name":"【プール】南 智花"},{"rarity":"SSR","name":"【同体】雀 明鈴"},{"rarity":"SSR","name":"【GS】メアリー"},{"rarity":"SSR","name":"【夜プール】南条 恋"},{"rarity":"SSR","name":"【自戒】朝比奈 龍季"},{"rarity":"SSR","name":"【チョコ】支倉 刀子"},{"rarity":"SSR","name":"【水泳？】楯野 望"},{"rarity":"SSR","name":"【初詣】桃世 もも"},{"rarity":"SSR","name":"【陸上部】南 智花"},{"rarity":"SSR","name":"【決意】楯野 望"},{"rarity":"SSR","name":"【アイドル】如月 天"},{"rarity":"SSR","name":"【監督】水無月 風子"},{"rarity":"SSR","name":"【フランス】桃世 もも"},{"rarity":"SSR","name":"【騎馬戦】守谷 月詠"},{"rarity":"SSR","name":"【果物】西原 ゆえ子"},{"rarity":"SSR","name":"【サンタ】東雲 アイラ"},{"rarity":"SSR","name":"【ダンス】月宮 沙那"},{"rarity":"SSR","name":"【冬着】神凪 怜"},{"rarity":"SSR","name":"【紅葉】ヤヨイ"},{"rarity":"SSR","name":"【年越し】立華 卯衣"},{"rarity":"SSR","name":"【VR？】楯野 望"},{"rarity":"SSR","name":"【藤】支倉 刀子"},{"rarity":"SSR","name":"【仮入部】南 智花"},{"rarity":"SSR","name":"【号泣】野薔薇 姫"},{"rarity":"SSR","name":"【最終儀式】遊佐 鳴子"},{"rarity":"SSR","name":"【上海】水瀬 薫子"},{"rarity":"SSR","name":"【一刀】支倉 刀子"},{"rarity":"SSR","name":"【姿態】水瀬 薫子"},{"rarity":"SSR","name":"【聖夜】皇 絢香"},{"rarity":"SSR","name":"【人狼】遊佐 鳴子"},{"rarity":"SSR","name":"【スパ】武田 虎千代"},{"rarity":"SSR","name":"【温泉】相馬 レナ"},{"rarity":"SSR","name":"【温泉】鳴海 純"},{"rarity":"SSR","name":"【魅力】立華 卯衣"},{"rarity":"SSR","name":"【日常】越水 ソフィア"},{"rarity":"SSR","name":"【裏世界】武田 虎千代"},{"rarity":"SSR","name":"【メイド】エミリア"},{"rarity":"SSR","name":"【チョコ】エミリア"},{"rarity":"SSR","name":"【水着】冷泉 葵"},{"rarity":"SSR","name":"【物語】雪白 ましろ"},{"rarity":"SSR","name":"【悪戯】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【図書委員】七喜 ちひろ"},{"rarity":"SSR","name":"【お給仕】風槍 ミナ"},{"rarity":"SSR","name":"【スパ】立華 卯衣"},{"rarity":"SSR","name":"【夜プール】小鳥遊 自由"},{"rarity":"SSR","name":"【叛逆】与那嶺 里菜"},{"rarity":"SSR","name":"【IF】白藤 香ノ葉"},{"rarity":"SSR","name":"【聖夜】神宮寺 初音"},{"rarity":"SSR","name":"【彼シャツ】雀 明鈴"},{"rarity":"SSR","name":"【水着】瑠璃川 秋穂"},{"rarity":"SSR","name":"【チョコ】雀 明鈴"},{"rarity":"SSR","name":"【双子】冬樹 ノエル"},{"rarity":"SSR","name":"【花見】月宮 沙那"},{"rarity":"SSR","name":"【干渉】冬樹 イヴ"},{"rarity":"SSR","name":"【凱旋】小鳥遊 自由"},{"rarity":"SSR","name":"【生徒会長】水無月 風子"},{"rarity":"SSR","name":"【花嫁】朝比奈 龍季"},{"rarity":"SSR","name":"【別府】東雲 アイラ"},{"rarity":"SSR","name":"【特級】皇 絢香"},{"rarity":"SSR","name":"【サンタ】野薔薇 姫"},{"rarity":"SSR","name":"【遠征】宍戸 結希"},{"rarity":"SSR","name":"【日差し】楯野 望"},{"rarity":"SSR","name":"【天体観測】風槍 ミナ"},{"rarity":"SSR","name":"【混浴】神凪 怜"},{"rarity":"SSR","name":"【卒業】夏海＆ゆかり"},{"rarity":"SSR","name":"【月見】風槍 ミナ"},{"rarity":"SSR","name":"【特級】立華 卯衣"},{"rarity":"SSR","name":"【猫耳】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【捜索】仲月 さら"},{"rarity":"SSR","name":"【夜プール】皇 絢香"},{"rarity":"SSR","name":"【取締り】水無月 風子"},{"rarity":"SSR","name":"【チョコ】冬樹 イヴ"},{"rarity":"SSR","name":"【桜】風槍 ミナ"},{"rarity":"SSR","name":"【混浴】水瀬 薫子"},{"rarity":"SSR","name":"【仮想恋愛】楯野 望"},{"rarity":"SSR","name":"【月見】東雲 アイラ"},{"rarity":"SSR","name":"【魔法祭】浦白 七撫"},{"rarity":"SSR","name":"【汐ファン】李 小蓮"},{"rarity":"SSR","name":"【渚】七喜 ちひろ"},{"rarity":"SSR","name":"【六年】南 智花"},{"rarity":"SSR","name":"【二周年】南 智花"},{"rarity":"SSR","name":"【選抜】霧塚 萌木"},{"rarity":"SSR","name":"【早起き】里中 花梨"},{"rarity":"SSR","name":"【特級】野薔薇 姫"},{"rarity":"SSR","name":"【夏祭り】白藤 香ノ葉"},{"rarity":"SSR","name":"【彼シャツ】霧塚 萌木"},{"rarity":"SSR","name":"【チョコ】浦白 七撫"},{"rarity":"SSR","name":"【浪漫】雪白 ましろ"},{"rarity":"SSR","name":"【夢幻】結城 聖奈"},{"rarity":"SSR","name":"【悪魔祓い】シャルロット"},{"rarity":"SSR","name":"【うたた寝】与那嶺 里菜"},{"rarity":"SSR","name":"【コロッケ】エミリア"},{"rarity":"SSR","name":"【七夕】水無月 風子"},{"rarity":"SSR","name":"【ミスコン】ヤヨイ"},{"rarity":"SSR","name":"【変身】皇 絢香"},{"rarity":"SSR","name":"【卒業】薫子＆萌木"},{"rarity":"SSR","name":"【フェス】神宮寺 初音"},{"rarity":"SSR","name":"【花嫁】海老名 あやせ"},{"rarity":"SSR","name":"【キャンプ】瑠璃川 秋穂"},{"rarity":"SSR","name":"【チョコ】楠木 ありす"},{"rarity":"SSR","name":"【危険物】氷川 紗妃"},{"rarity":"SSR","name":"【しっぽ】月宮 沙那"},{"rarity":"SSR","name":"【過去】エレン"},{"rarity":"SSR","name":"【クルーズ】犬川 寧々"},{"rarity":"SSR","name":"【選抜】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【晴れ着？】皇 絢香"},{"rarity":"SSR","name":"【物語】来栖 焔"},{"rarity":"SSR","name":"【戦争】神宮寺 初音"},{"rarity":"SSR","name":"【もう少し】椎名 ゆかり"},{"rarity":"SSR","name":"【クルーズ】宍戸 結希"},{"rarity":"SSR","name":"【年越準備】岸田 夏海"},{"rarity":"SSR","name":"【素破】水無月 風子"},{"rarity":"SSR","name":"【過去】桃世 もも"},{"rarity":"SSR","name":"【水中】浦白 七撫"},{"rarity":"SSR","name":"【意義】冬樹 イヴ"},{"rarity":"SSR","name":"【物語】ミナ＆恋"},{"rarity":"SSR","name":"【ホラー】東雲 アイラ"},{"rarity":"SSR","name":"【五周年】氷川 紗妃"},{"rarity":"SSR","name":"【リバース】東雲 アイラ"},{"rarity":"SSR","name":"【温泉】立華 卯衣"},{"rarity":"SSR","name":"【特級】ヤヨイ"},{"rarity":"SSR","name":"【水着】南条 恋"},{"rarity":"SSR","name":"【雪】服部 梓"},{"rarity":"SSR","name":"【肝試し】瑠璃川 春乃"},{"rarity":"SSR","name":"【御神籤】神凪 怜"},{"rarity":"SSR","name":"【海水浴】犬川 寧々"},{"rarity":"SSR","name":"【ケーキ】浦白 七撫"},{"rarity":"SSR","name":"【演劇】霧塚 萌木"},{"rarity":"SSR","name":"【聖夜】仲月 さら"},{"rarity":"SSR","name":"【六周年】冬樹 ノエル"},{"rarity":"SSR","name":"【アイドル】宍戸 結希"},{"rarity":"SSR","name":"【ロンドン】李 小蓮"},{"rarity":"SSR","name":"【霧】小鳥遊 自由"},{"rarity":"SSR","name":"【膝枕】冬樹 ノエル"},{"rarity":"SSR","name":"【狩人】水無月 風子"},{"rarity":"SSR","name":"【特級】椎名 ゆかり"},{"rarity":"SSR","name":"【ふて寝】守谷 月詠"},{"rarity":"SSR","name":"【タロット】間宮 千佳"},{"rarity":"SSR","name":"【ヒョウ】氷川 紗妃"},{"rarity":"SSR","name":"【カウント】ヤヨイ"},{"rarity":"SSR","name":"【かるた】南 智花"},{"rarity":"SSR","name":"【魔女】如月 天"},{"rarity":"SSR","name":"【上陸】守谷 月詠"},{"rarity":"SSR","name":"【選抜】エミリア"},{"rarity":"SSR","name":"【疲れ】霧塚 萌木"},{"rarity":"SSR","name":"【達人】服部 梓"},{"rarity":"SSR","name":"【天邪鬼】守谷 月詠"},{"rarity":"SSR","name":"【選抜】瑠璃川 春乃"},{"rarity":"SSR","name":"【巫女】鳴海 純"},{"rarity":"SSR","name":"【合宿】岸田 夏海"},{"rarity":"SSR","name":"【花嫁】神凪 怜"},{"rarity":"SSR","name":"【花嫁】神宮寺 初音"},{"rarity":"SSR","name":"【お月見】冬樹 ノエル"},{"rarity":"SSR","name":"【兎】立華 卯衣"},{"rarity":"SSR","name":"【到来】浦白 七撫"},{"rarity":"SSR","name":"【沖縄】犬川 寧々"},{"rarity":"SSR","name":"【決意】如月 天"},{"rarity":"SSR","name":"【新年】音無 律"},{"rarity":"SSR","name":"【生徒会】水瀬 薫子"},{"rarity":"SSR","name":"【パジャマ】立華 卯衣"},{"rarity":"SSR","name":"【別府】椎名 ゆかり"},{"rarity":"SSR","name":"【IF】月詠＆ゆかり"},{"rarity":"SSR","name":"【衣装】結城 聖奈"},{"rarity":"SSR","name":"【ロシア】仲月 さら"},{"rarity":"SSR","name":"【トナカイ】冬樹 ノエル"},{"rarity":"SSR","name":"【花嫁】立華 卯衣"},{"rarity":"SSR","name":"【選抜】犬川 寧々"},{"rarity":"SSR","name":"【願い】岸田 夏海"},{"rarity":"SSR","name":"【野点】白藤 香ノ葉"},{"rarity":"SSR","name":"【チョコ】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【女子高生】相馬 レナ"},{"rarity":"SSR","name":"【特級】里中 花梨"},{"rarity":"SSR","name":"【果物】南条 恋"},{"rarity":"SSR","name":"【恋バナ】東雲 アイラ"},{"rarity":"SSR","name":"【チョコ】鳴海 純"},{"rarity":"SSR","name":"【サンタ】守谷 月詠"},{"rarity":"SSR","name":"【シャツ】神凪 怜"},{"rarity":"SSR","name":"【いつもの】氷川 紗妃"},{"rarity":"SSR","name":"【狐】服部 梓"},{"rarity":"SSR","name":"【寝正月】楯野 望"},{"rarity":"SSR","name":"【昔話】エレン"},{"rarity":"SSR","name":"【決意】朝比奈 龍季"},{"rarity":"SSR","name":"【南風】岸田 夏海"},{"rarity":"SSR","name":"【選抜】神凪 怜"},{"rarity":"SSR","name":"【裏世界】鳴海 純"},{"rarity":"SSR","name":"【アメコミ】岸田 夏海"},{"rarity":"SSR","name":"【座長】武田 虎千代"},{"rarity":"SSR","name":"【巫女】ヤヨイ"},{"rarity":"SSR","name":"【彼シャツ】犬川 寧々"},{"rarity":"SSR","name":"【歓迎】雀 明鈴"},{"rarity":"SSR","name":"【自転車】風槍 ミナ"},{"rarity":"SSR","name":"【聖夜】鳴海 純"},{"rarity":"SSR","name":"【田舎】宍戸 結希"},{"rarity":"SSR","name":"【老舗】氷川 紗妃"},{"rarity":"SSR","name":"【豆まき】越水 ソフィア"},{"rarity":"SSR","name":"【餅つき】冬樹 ノエル"},{"rarity":"SSR","name":"【卒業】ソフィア＆もも"},{"rarity":"SSR","name":"【シャツ】松島 みちる"},{"rarity":"SSR","name":"【選抜】メアリー"},{"rarity":"SSR","name":"【スパ】岸田 夏海"},{"rarity":"SSR","name":"【花嫁】小鳥遊 自由"},{"rarity":"SSR","name":"【雪祭】瑠璃川 秋穂"},{"rarity":"SSR","name":"【上海】双美 心"},{"rarity":"SSR","name":"【ラフ】海老名 あやせ"},{"rarity":"SSR","name":"【撮影】皇 絢香"},{"rarity":"SSR","name":"【魔女】松島 みちる"},{"rarity":"SSR","name":"【渚】シャルロット"},{"rarity":"SSR","name":"【暇つぶし】東雲 アイラ"},{"rarity":"SSR","name":"【選抜】冷泉 葵"},{"rarity":"SSR","name":"【花嫁】武田 虎千代"},{"rarity":"SSR","name":"【即売会】南 智花"},{"rarity":"SSR","name":"【過去】水無月 風子"},{"rarity":"SSR","name":"【聖夜】守谷 月詠"},{"rarity":"SSR","name":"【アイドル】皇 絢香"},{"rarity":"SSR","name":"【最終儀式】我妻 浅梨"},{"rarity":"SSR","name":"【花嫁】李 小蓮"},{"rarity":"SSR","name":"【年末年始】水瀬 薫子"},{"rarity":"SSR","name":"【不具合】我妻 浅梨"},{"rarity":"SSR","name":"【デート】冬樹 ノエル"},{"rarity":"SSR","name":"【年越し】小鳥遊 自由"},{"rarity":"SSR","name":"【特級】冬樹 イヴ"},{"rarity":"SSR","name":"【特級】鳴海 純"},{"rarity":"SSR","name":"【水族館】楠木 ありす"},{"rarity":"SSR","name":"【アイドル】瑠璃川 春乃"},{"rarity":"SSR","name":"【忍者】立華 卯衣"},{"rarity":"SSR","name":"【メイド】守谷 月詠"},{"rarity":"SSR","name":"【人力車】支倉 刀子"},{"rarity":"SSR","name":"【暴走】東雲 アイラ"},{"rarity":"SSR","name":"【裏世界】月宮 沙那"},{"rarity":"SSR","name":"【スイーツ】海老名 あやせ"},{"rarity":"SSR","name":"【微熱】桃世 もも"},{"rarity":"SSR","name":"【オセロ】風槍 ミナ"},{"rarity":"SSR","name":"【思い出】野薔薇 姫"},{"rarity":"SSR","name":"【童話】冷泉 葵"},{"rarity":"SSR","name":"【オトリ】服部 梓"},{"rarity":"SSR","name":"【花嫁】音無 律"},{"rarity":"SSR","name":"【世界】皇 絢香"},{"rarity":"SSR","name":"【自虐】双美 心"},{"rarity":"SSR","name":"【究極】生天目 つかさ"},{"rarity":"SSR","name":"【おもち】楠木 ありす"},{"rarity":"SSR","name":"【制服】エミリア"},{"rarity":"SSR","name":"【パジャマ】月宮 沙那"},{"rarity":"SSR","name":"【ゲーセン】李 小蓮"},{"rarity":"SSR","name":"【卒業】遊佐 鳴子"},{"rarity":"SSR","name":"【花嫁】エレン"},{"rarity":"SSR","name":"【保育士】氷川 紗妃"},{"rarity":"SSR","name":"【渚】霧塚 萌木"},{"rarity":"SSR","name":"【童話】間宮 千佳"},{"rarity":"SSR","name":"【感傷】白藤 香ノ葉"},{"rarity":"SSR","name":"【その時】来栖 焔"},{"rarity":"SSR","name":"【ひな祭り】来栖 焔"},{"rarity":"SSR","name":"【リバース】萌木＆里菜"},{"rarity":"SSR","name":"【昼寝】鳴海 純"},{"rarity":"SSR","name":"【特級】生天目 つかさ"},{"rarity":"SSR","name":"【お月見】瑠璃川 秋穂"},{"rarity":"SSR","name":"【聖夜】遊佐 鳴子"},{"rarity":"SSR","name":"【復興】風槍 ミナ"},{"rarity":"SSR","name":"【熊】与那嶺 里菜"},{"rarity":"SSR","name":"【過去】南 智花"},{"rarity":"SSR","name":"【本命？】我妻 浅梨"},{"rarity":"SSR","name":"【花見】如月 天"},{"rarity":"SSR","name":"【ひな祭り】神宮寺 初音"},{"rarity":"SSR","name":"【スパ】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【満員電車】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【贈り物】南条 恋"},{"rarity":"SSR","name":"【花嫁】水無月 風子"},{"rarity":"SSR","name":"【梅雨】南条 恋"},{"rarity":"SSR","name":"【ゲーセン】音無 律"},{"rarity":"SSR","name":"【運動会】松島 みちる"},{"rarity":"SSR","name":"【双子】冬樹 イヴ"},{"rarity":"SSR","name":"【選抜】西原 ゆえ子"},{"rarity":"SSR","name":"【別府】風槍 ミナ"},{"rarity":"SSR","name":"【深呼吸】西原 ゆえ子"},{"rarity":"SSR","name":"【四周年】立華 卯衣"},{"rarity":"SSR","name":"【凱旋】相馬 レナ"},{"rarity":"SSR","name":"【看病】瑠璃川 秋穂"},{"rarity":"SSR","name":"【かたにく】相馬 レナ"},{"rarity":"SSR","name":"【海人】与那嶺 里菜"},{"rarity":"SSR","name":"【ゲーセン】椎名 ゆかり"},{"rarity":"SSR","name":"【夢魔】遊佐 鳴子"},{"rarity":"SSR","name":"【水着】水瀬 薫子"},{"rarity":"SSR","name":"【ヒグマ】浦白 七撫"},{"rarity":"SSR","name":"【魔法祭】エレン"},{"rarity":"SSR","name":"【悠々】服部 梓"},{"rarity":"SSR","name":"【護衛】小鳥遊 自由"},{"rarity":"SSR","name":"【身体測定】瑠璃川 秋穂"},{"rarity":"SSR","name":"【制服】神宮寺 初音"},{"rarity":"SSR","name":"【花嫁】我妻 浅梨"},{"rarity":"SSR","name":"【チョコ】南条 恋"},{"rarity":"SSR","name":"【自転車】神凪 怜"},{"rarity":"SSR","name":"【いっしょ】桃世 もも"},{"rarity":"SSR","name":"【水着】椎名 ゆかり"},{"rarity":"SSR","name":"【半分】立華 卯衣"},{"rarity":"SSR","name":"【お揃い】楠木 ありす"},{"rarity":"SSR","name":"【お料理】浦白 七撫"},{"rarity":"SSR","name":"【問いかけ】双美 心"},{"rarity":"SSR","name":"【カボチャ】来栖 焔"},{"rarity":"SSR","name":"【プール】ヤヨイ"},{"rarity":"SSR","name":"【決意】小鳥遊 自由"},{"rarity":"SSR","name":"【特級】円野 真理佳"},{"rarity":"SSR","name":"【贈り物】風槍 ミナ"},{"rarity":"SSR","name":"【裏世界】仲月 さら"},{"rarity":"SSR","name":"【朦朧】如月 天"},{"rarity":"SSR","name":"【パジャマ】瑠璃川 秋穂"},{"rarity":"SSR","name":"【希望】リゼット"},{"rarity":"SSR","name":"【休息】越水 ソフィア"},{"rarity":"SSR","name":"【チョコ】李 小蓮"},{"rarity":"SSR","name":"【最終儀式】ヤヨイ"},{"rarity":"SSR","name":"【花】冷泉 葵"},{"rarity":"SSR","name":"【リバース】楠木 ありす"},{"rarity":"SSR","name":"【見舞】里中 花梨"},{"rarity":"SSR","name":"【選抜】支倉 刀子"},{"rarity":"SSR","name":"【過去】立華 卯衣"},{"rarity":"SSR","name":"【正月】瑠璃川 春乃"},{"rarity":"SSR","name":"【路地裏】西原 ゆえ子"},{"rarity":"SSR","name":"【上海】来栖 焔"},{"rarity":"SSR","name":"【チョコ】冬樹 ノエル"},{"rarity":"SSR","name":"【聖夜】野薔薇 姫"},{"rarity":"SSR","name":"【即売会】氷川 紗妃"},{"rarity":"SSR","name":"【復活祭】冷泉 葵"},{"rarity":"SSR","name":"【特級】神凪 怜"},{"rarity":"SSR","name":"【願い】生天目 つかさ"},{"rarity":"SSR","name":"【選抜】氷川 紗妃"},{"rarity":"SSR","name":"【クルーズ】水無月 風子"},{"rarity":"SSR","name":"【聖夜】楯野 望"},{"rarity":"SSR","name":"【彼シャツ】李 小蓮"},{"rarity":"SSR","name":"【初雪】我妻 浅梨"},{"rarity":"SSR","name":"【夏】双美 心"},{"rarity":"SSR","name":"【仮契約】風槍 ミナ"},{"rarity":"SSR","name":"【物語】小蓮＆明鈴＆万姫"},{"rarity":"SSR","name":"【スパイ】服部 梓"},{"rarity":"SSR","name":"【出会い】南 智花"},{"rarity":"SSR","name":"【最終儀式】南 智花"},{"rarity":"SSR","name":"【チョコ】結城 聖奈"},{"rarity":"SSR","name":"【特級】エミリア"},{"rarity":"SSR","name":"【再訪】氷川 紗妃"},{"rarity":"SSR","name":"【慟哭】冬樹 ノエル"},{"rarity":"SSR","name":"【サンタ】李 小蓮"},{"rarity":"SSR","name":"【特級】桃世 もも"},{"rarity":"SSR","name":"【お姫様】霧塚 萌木"},{"rarity":"SSR","name":"【夜プール】神宮寺 初音"},{"rarity":"SSR","name":"【バレー】冬樹 ノエル"},{"rarity":"SSR","name":"【選抜】神宮寺 初音"},{"rarity":"SSR","name":"【願い】東雲 アイラ"},{"rarity":"SSR","name":"【潜入】来栖 焔"},{"rarity":"SSR","name":"【月見】冬樹 イヴ"},{"rarity":"SSR","name":"【聖夜】武田 虎千代"},{"rarity":"SSR","name":"【聖夜】神凪 怜"},{"rarity":"SSR","name":"【文化祭】瑠璃川 秋穂"},{"rarity":"SSR","name":"【チョコ】東雲 アイラ"},{"rarity":"SSR","name":"【特級】仲月 さら"},{"rarity":"SSR","name":"【ジム】仲月 さら"},{"rarity":"SSR","name":"【着替え】冬樹 イヴ"},{"rarity":"SSR","name":"【特級】雀 明鈴"},{"rarity":"SSR","name":"【発散】エレン"},{"rarity":"SSR","name":"【デート？】守谷 月詠"},{"rarity":"SSR","name":"【裏世界】神宮寺 初音"},{"rarity":"SSR","name":"【アピール】桃世 もも"},{"rarity":"SSR","name":"【聖夜】水無月 風子"},{"rarity":"SSR","name":"【秋祭り】瑠璃川 秋穂"},{"rarity":"SSR","name":"【使命】椎名 ゆかり"},{"rarity":"SSR","name":"【卒業】南 智花"},{"rarity":"SSR","name":"【最終儀式】西原 ゆえ子"},{"rarity":"SSR","name":"【バット】皇 絢香"},{"rarity":"SSR","name":"【もでる】南条 恋"},{"rarity":"SSR","name":"【プール】服部 梓"},{"rarity":"SSR","name":"【過去】瑠璃川 春乃"},{"rarity":"SSR","name":"【花嫁】桃世 もも"},{"rarity":"SSR","name":"【彼シャツ】間宮 千佳"},{"rarity":"SSR","name":"【矜持】野薔薇 姫"},{"rarity":"SSR","name":"【傷】生天目 つかさ"},{"rarity":"SSR","name":"【太鼓】武田 虎千代"},{"rarity":"SSR","name":"【花見】エミリア"},{"rarity":"SSR","name":"【選抜】松島 みちる"},{"rarity":"SSR","name":"【汐ファン】間宮 千佳"},{"rarity":"SSR","name":"【トラップ】ヤヨイ"},{"rarity":"SSR","name":"【選抜】南条 恋"},{"rarity":"SSR","name":"【星図】双美 心"},{"rarity":"SSR","name":"【ゲーム】野薔薇 姫"},{"rarity":"SSR","name":"【戦争】月宮 沙那"},{"rarity":"SSR","name":"【出征】結城 聖奈"},{"rarity":"SSR","name":"【選抜】雪白 ましろ"},{"rarity":"SSR","name":"【写真館】岸田 夏海"},{"rarity":"SSR","name":"【特級】エレン"},{"rarity":"SSR","name":"【温泉宿】瑠璃川 春乃"},{"rarity":"SSR","name":"【特級】岸田 夏海"},{"rarity":"SSR","name":"【スイーツ】浦白 七撫"},{"rarity":"SSR","name":"【花見】神凪 怜"},{"rarity":"SSR","name":"【学園祭】円野 真理佳"},{"rarity":"SSR","name":"【過去】里中 花梨"},{"rarity":"SSR","name":"【銭湯】我妻 浅梨"},{"rarity":"SSR","name":"【沖縄】武田 虎千代"},{"rarity":"SSR","name":"【バッセン】シャルロット"},{"rarity":"SSR","name":"【特級】水瀬 薫子"},{"rarity":"SSR","name":"【潜入捜査】結城 聖奈"},{"rarity":"SSR","name":"【ゲーセン】水瀬 薫子"},{"rarity":"SSR","name":"【本番中】皇 絢香"},{"rarity":"SSR","name":"【卒業】雪白 ましろ"},{"rarity":"SSR","name":"【巫女舞】神凪 怜"},{"rarity":"SSR","name":"【継承】海老名 あやせ"},{"rarity":"SSR","name":"【昼寝】瑠璃川 春乃"},{"rarity":"SSR","name":"【奇蹟】立華 卯衣"},{"rarity":"SSR","name":"【幽霊】楯野 望"},{"rarity":"SSR","name":"【世話】里中 花梨"},{"rarity":"SSR","name":"【初詣】守谷 月詠"},{"rarity":"SSR","name":"【パジャマ】桃世 もも"},{"rarity":"SSR","name":"【花見】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【予感】メアリー"},{"rarity":"SSR","name":"【兄】神宮寺 初音"},{"rarity":"SSR","name":"【電話】松島 みちる"},{"rarity":"SSR","name":"【お給仕】白藤 香ノ葉"},{"rarity":"SSR","name":"【温泉宿】神凪 怜"},{"rarity":"SSR","name":"【願い】宍戸 結希"},{"rarity":"SSR","name":"【制服】来栖 焔"},{"rarity":"SSR","name":"【桜】立華 卯衣"},{"rarity":"SSR","name":"【サンタ】神宮寺 初音"},{"rarity":"SSR","name":"【特級】風槍 ミナ"},{"rarity":"SSR","name":"【ゲーセン】間宮 千佳"},{"rarity":"SSR","name":"【秘技】武田 虎千代"},{"rarity":"SSR","name":"【上海】結城 聖奈"},{"rarity":"SSR","name":"【特級】間宮 千佳"},{"rarity":"SSR","name":"【リバース】立華 卯衣"},{"rarity":"SSR","name":"【チア】水無月 風子"},{"rarity":"SSR","name":"【過去】宍戸 結希"},{"rarity":"SSR","name":"【縁結び】円野 真理佳"},{"rarity":"SSR","name":"【操人形】楠木 ありす"},{"rarity":"SSR","name":"【怨念】神凪 怜"},{"rarity":"SSR","name":"【艶姿】皇 絢香"},{"rarity":"SSR","name":"【IF】智花＆怜＆夏海"},{"rarity":"SSR","name":"【制服】冬樹 イヴ"},{"rarity":"SSR","name":"【向日葵】海老名 あやせ"},{"rarity":"SSR","name":"【願い】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【即売会】西原 ゆえ子"},{"rarity":"SSR","name":"【贈り物】武田 虎千代"},{"rarity":"SSR","name":"【二年参り】野薔薇 姫"},{"rarity":"SSR","name":"【サファリ】南条 恋"},{"rarity":"SSR","name":"【死神】風槍 ミナ"},{"rarity":"SSR","name":"【撮影】水瀬 薫子"},{"rarity":"SSR","name":"【体験】東雲 アイラ"},{"rarity":"SSR","name":"【ひな祭り】楠木 ありす"},{"rarity":"SSR","name":"【凱旋】鳴海 純"},{"rarity":"SSR","name":"【特級】松島 みちる"},{"rarity":"SSR","name":"【花嫁】氷川 紗妃"},{"rarity":"SSR","name":"【チョコ】小鳥遊 自由"},{"rarity":"SSR","name":"【花見】東雲 アイラ"},{"rarity":"SSR","name":"【即売会】南条 恋"},{"rarity":"SSR","name":"【降臨】立華 卯衣"},{"rarity":"SSR","name":"【急接近】我妻 浅梨"},{"rarity":"SSR","name":"【正月】犬川 寧々"},{"rarity":"SSR","name":"【思い出】南 智花"},{"rarity":"SSR","name":"【本心】支倉 刀子"},{"rarity":"SSR","name":"【雪祭】西原 ゆえ子"},{"rarity":"SSR","name":"【選抜】岸田 夏海"},{"rarity":"SSR","name":"【懐疑】遊佐 鳴子"},{"rarity":"SSR","name":"【裏世界】風槍 ミナ"},{"rarity":"SSR","name":"【プール】守谷 月詠"},{"rarity":"SSR","name":"【選抜】水瀬 薫子"},{"rarity":"SSR","name":"【イルカ】朝比奈 龍季"},{"rarity":"SSR","name":"【バニー】西原 ゆえ子"},{"rarity":"SSR","name":"【クマ】冬樹 イヴ"},{"rarity":"SSR","name":"【カカオ】犬川 寧々"},{"rarity":"SSR","name":"【メイド】白藤 香ノ葉"},{"rarity":"SSR","name":"【緊急出動】岸田 夏海"},{"rarity":"SSR","name":"【豆まき】双美 心"},{"rarity":"SSR","name":"【夢幻】エレン"},{"rarity":"SSR","name":"【チョコ】遊佐 鳴子"},{"rarity":"SSR","name":"【変装】岸田 夏海"},{"rarity":"SSR","name":"【特級】神宮寺 初音"},{"rarity":"SSR","name":"【進軍】椎名 ゆかり"},{"rarity":"SSR","name":"【水着】小鳥遊 自由"},{"rarity":"SSR","name":"【主従】野薔薇 姫"},{"rarity":"SSR","name":"【特級】氷川 紗妃"},{"rarity":"SSR","name":"【極楽】小鳥遊 自由"},{"rarity":"SSR","name":"【手紙】神宮寺 初音"},{"rarity":"SSR","name":"【約束】東雲 アイラ"},{"rarity":"SSR","name":"【ぺでんと】相馬 レナ"},{"rarity":"SSR","name":"【春爛漫】里中 花梨"},{"rarity":"SSR","name":"【選抜】ヤヨイ"},{"rarity":"SSR","name":"【特級】支倉 刀子"},{"rarity":"SSR","name":"【占い師】楯野 望"},{"rarity":"SSR","name":"【悲報】エミリア"},{"rarity":"SSR","name":"【プール】円野 真理佳"},{"rarity":"SSR","name":"【補習】南 智花"},{"rarity":"SSR","name":"【スーツ】小鳥遊 自由"},{"rarity":"SSR","name":"【賀正】霧塚 萌木"},{"rarity":"SSR","name":"【リバース】双美 心"},{"rarity":"SSR","name":"【ごちそう】犬川 寧々"},{"rarity":"SSR","name":"【ご挨拶】東雲 アイラ"},{"rarity":"SSR","name":"【波打際】東雲 アイラ"},{"rarity":"SSR","name":"【店番】桃世 もも"},{"rarity":"SSR","name":"【選抜】仲月 さら"},{"rarity":"SSR","name":"【蝶々】岸田 夏海"},{"rarity":"SSR","name":"【１等】越水 ソフィア"},{"rarity":"SSR","name":"【転寝】遊佐 鳴子"},{"rarity":"SSR","name":"【夢魔】武田 虎千代"},{"rarity":"SSR","name":"【暴露】遊佐 鳴子"},{"rarity":"SSR","name":"【選抜】与那嶺 里菜"},{"rarity":"SSR","name":"【休日】月宮 沙那"},{"rarity":"SSR","name":"【コンビ芸】仲月 さら"},{"rarity":"SSR","name":"【料理】来栖 焔"},{"rarity":"SSR","name":"【選抜】シャルロット"},{"rarity":"SSR","name":"【リバース】イヴ＆ノエル"},{"rarity":"SSR","name":"【プール】瑠璃川 秋穂"},{"rarity":"SSR","name":"【決意】南 智花"},{"rarity":"SSR","name":"【その時】小鳥遊 自由"},{"rarity":"SSR","name":"【即売会】桃世 もも"},{"rarity":"SSR","name":"【ヒヨコ】楯野 望"},{"rarity":"SSR","name":"【夏祭り】立華 卯衣"},{"rarity":"SSR","name":"【裏世界】円野 真理佳"},{"rarity":"SSR","name":"【日常】楠木 ありす"},{"rarity":"SSR","name":"【最終儀式】冬樹 イヴ"},{"rarity":"SSR","name":"【特級】双美 心"},{"rarity":"SSR","name":"【救出】結城 聖奈"},{"rarity":"SSR","name":"【メイド】瑠璃川 秋穂"},{"rarity":"SSR","name":"【カップ】霧塚 萌木"},{"rarity":"SSR","name":"【国連軍】エレン"},{"rarity":"SSR","name":"【十五夜】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【裏世界】白藤 香ノ葉"},{"rarity":"SSR","name":"【小悪魔】瑠璃川 秋穂"},{"rarity":"SSR","name":"【IF】律＆千佳"},{"rarity":"SSR","name":"【妖怪】越水 ソフィア"},{"rarity":"SSR","name":"【肝試し】エミリア"},{"rarity":"SSR","name":"【希望】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【魔法祭】西原 ゆえ子"},{"rarity":"SSR","name":"【オフ】皇 絢香"},{"rarity":"SSR","name":"【激怒】瑠璃川 春乃"},{"rarity":"SSR","name":"【チョコ】野薔薇 姫"},{"rarity":"SSR","name":"【その時】如月 天"},{"rarity":"SSR","name":"【純潔】野薔薇 姫"},{"rarity":"SSR","name":"【制服】瑠璃川 秋穂"},{"rarity":"SSR","name":"【休息】海老名 あやせ"},{"rarity":"SSR","name":"【監視】氷川 紗妃"},{"rarity":"SSR","name":"【動物園】メアリー"},{"rarity":"SSR","name":"【夏祭り】小鳥遊 自由"},{"rarity":"SSR","name":"【水着】風槍 ミナ"},{"rarity":"SSR","name":"【カリブ】武田 虎千代"},{"rarity":"SSR","name":"【福笑い】七喜 ちひろ"},{"rarity":"SSR","name":"【朝】風槍 ミナ"},{"rarity":"SSR","name":"【自転車】双美 心"},{"rarity":"SSR","name":"【田舎】野薔薇 姫"},{"rarity":"SSR","name":"【盟友】エミリア"},{"rarity":"SSR","name":"【花嫁】東雲 アイラ"},{"rarity":"SSR","name":"【復活祭】楠木 ありす"},{"rarity":"SSR","name":"【きもの】相馬 レナ"},{"rarity":"SSR","name":"【ロンドン】服部 梓"},{"rarity":"SSR","name":"【体験】結城 聖奈"},{"rarity":"SSR","name":"【窮地】如月 天"},{"rarity":"SSR","name":"【ひな祭り】霧塚 萌木"},{"rarity":"SSR","name":"【ひな祭り】瑠璃川 秋穂"},{"rarity":"SSR","name":"【夏祭り】遊佐 鳴子"},{"rarity":"SSR","name":"【雪】メアリー"},{"rarity":"SSR","name":"【宝石】服部 梓"},{"rarity":"SSR","name":"【魔女】氷川 紗妃"},{"rarity":"SSR","name":"【一片氷心】冬樹 イヴ"},{"rarity":"SSR","name":"【待望】七喜 ちひろ"},{"rarity":"SSR","name":"【牛乳】冷泉 葵"},{"rarity":"SSR","name":"【二人三脚】海老名 あやせ"},{"rarity":"SSR","name":"【カボチャ】岸田 夏海"},{"rarity":"SSR","name":"【ログイン】楯野 望"},{"rarity":"SSR","name":"【物語】野薔薇 姫"},{"rarity":"SSR","name":"【本命】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【二徹】岸田 夏海"},{"rarity":"SSR","name":"【プール】野薔薇 姫"},{"rarity":"SSR","name":"【年越し】東雲 アイラ"},{"rarity":"SSR","name":"【別府】音無 律"},{"rarity":"SSR","name":"【カカオ】冬樹 イヴ"},{"rarity":"SSR","name":"【桜】椎名 ゆかり"},{"rarity":"SSR","name":"【激怒】里中 花梨"},{"rarity":"SSR","name":"【温泉】七喜 ちひろ"},{"rarity":"SSR","name":"【学園祭】皇 絢香"},{"rarity":"SSR","name":"【GW】与那嶺 里菜"},{"rarity":"SSR","name":"【過去】結城 聖奈"},{"rarity":"SSR","name":"【卒業】龍季＆春乃"},{"rarity":"SSR","name":"【ホラー】宍戸 結希"},{"rarity":"SSR","name":"【背伸び】神凪 怜"},{"rarity":"SSR","name":"【聖夜】来栖 焔"},{"rarity":"SSR","name":"【夢魔】瑠璃川 春乃"},{"rarity":"SSR","name":"【パン】霧塚 萌木"},{"rarity":"SSR","name":"【悲劇】西原 ゆえ子"},{"rarity":"SSR","name":"【進軍】冬樹 ノエル"},{"rarity":"SSR","name":"【武闘家】鳴海 純"},{"rarity":"SSR","name":"【月見】相馬 レナ"},{"rarity":"SSR","name":"【即売会】我妻 浅梨"},{"rarity":"SSR","name":"【運動会】円野 真理佳"},{"rarity":"SSR","name":"【選抜】月宮 沙那"},{"rarity":"SSR","name":"【花見】海老名 あやせ"},{"rarity":"SSR","name":"【新年】服部 梓"},{"rarity":"SSR","name":"【裏世界】冬樹 イヴ"},{"rarity":"SSR","name":"【死闘】越水 ソフィア"},{"rarity":"SSR","name":"【裏世界】生天目 つかさ"},{"rarity":"SSR","name":"【夏風】南 智花"},{"rarity":"SSR","name":"【夜プール】楠木 ありす"},{"rarity":"SSR","name":"【新年】冬樹 イヴ"},{"rarity":"SSR","name":"【年越し】間宮 千佳"},{"rarity":"SSR","name":"【海の家】桃世 もも"},{"rarity":"SSR","name":"【江ノ島】さら＆ノエル＆秋穂"},{"rarity":"SSR","name":"【月】シャルロット"},{"rarity":"SSR","name":"【憧憬】円野 真理佳"},{"rarity":"SSR","name":"【プール】楠木 ありす"},{"rarity":"SSR","name":"【お姫様】守谷 月詠"},{"rarity":"SSR","name":"【物語】春乃＆秋穂"},{"rarity":"SSR","name":"【特級】来栖 焔"},{"rarity":"SSR","name":"【覚悟】武田 虎千代"},{"rarity":"SSR","name":"【田舎】里中 花梨"},{"rarity":"SSR","name":"【特級】越水 ソフィア"},{"rarity":"SSR","name":"【記憶】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【上海】霧塚 萌木"},{"rarity":"SSR","name":"【水着】来栖 焔"},{"rarity":"SSR","name":"【お掃除】瑠璃川 秋穂"},{"rarity":"SSR","name":"【アメコミ】椎名 ゆかり"},{"rarity":"SSR","name":"【制服】桃世 もも"},{"rarity":"SSR","name":"【犬】犬川 寧々"},{"rarity":"SSR","name":"【英雄】円野 真理佳"},{"rarity":"SSR","name":"【リゾート】冬樹 ノエル"},{"rarity":"SSR","name":"【料理】東雲 アイラ"},{"rarity":"SSR","name":"【沖縄】我妻 浅梨"},{"rarity":"SSR","name":"【サファリ】メアリー"},{"rarity":"SSR","name":"【ギター】桃世 もも"},{"rarity":"SSR","name":"【狐】神凪 怜"},{"rarity":"SSR","name":"【アイドル】服部 梓"},{"rarity":"SSR","name":"【堕天使】冬樹 イヴ"},{"rarity":"SSR","name":"【烏】水瀬 薫子"},{"rarity":"SSR","name":"【こたつ】越水 ソフィア"},{"rarity":"SSR","name":"【お月見】里中 花梨"},{"rarity":"SSR","name":"【シャツ】服部 梓"},{"rarity":"SSR","name":"【聖夜】風槍 ミナ"},{"rarity":"SSR","name":"【特級】宍戸 結希"},{"rarity":"SSR","name":"【即売会】小鳥遊 自由"},{"rarity":"SSR","name":"【制服】冬樹 ノエル"},{"rarity":"SSR","name":"【花嫁】白藤 香ノ葉"},{"rarity":"SSR","name":"【未来】立華 卯衣"},{"rarity":"SSR","name":"【長老】相馬 レナ"},{"rarity":"SSR","name":"【庇護】瑠璃川 秋穂"},{"rarity":"SSR","name":"【巫女】来栖 焔"},{"rarity":"SSR","name":"【掃除】氷川 紗妃"},{"rarity":"SSR","name":"【シャツ】冬樹 ノエル"},{"rarity":"SSR","name":"【夏祭り】水瀬 薫子"},{"rarity":"SSR","name":"【花見】冬樹 イヴ"},{"rarity":"SSR","name":"【運動会】音無 律"},{"rarity":"SSR","name":"【贈り物】野薔薇 姫"},{"rarity":"SSR","name":"【パジャマ】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【選抜】双美 心"},{"rarity":"SSR","name":"【天体観測】南条 恋"},{"rarity":"SSR","name":"【GW】皇 絢香"},{"rarity":"SSR","name":"【射的】メアリー"},{"rarity":"SSR","name":"【選抜】生天目 つかさ"},{"rarity":"SSR","name":"【選抜】エレン"},{"rarity":"SSR","name":"【月見】冷泉 葵"},{"rarity":"SSR","name":"【チア】ヤヨイ"},{"rarity":"SSR","name":"【記憶】立華 卯衣"},{"rarity":"SSR","name":"【文化祭】桃世 もも"},{"rarity":"SSR","name":"【リバース】桃世 もも"},{"rarity":"SSR","name":"【ひな祭り】冬樹 ノエル"},{"rarity":"SSR","name":"【温泉】服部 梓"},{"rarity":"SSR","name":"【水着】結城 聖奈"},{"rarity":"SSR","name":"【シャツ】岸田 夏海"},{"rarity":"SSR","name":"【最前列】音無 律"},{"rarity":"SSR","name":"【魔法祭】瑠璃川 春乃"},{"rarity":"SSR","name":"【生存】音無 律"},{"rarity":"SSR","name":"【一緒】仲月 さら"},{"rarity":"SSR","name":"【特級】瑠璃川 春乃"},{"rarity":"SSR","name":"【激闘】野薔薇 姫"},{"rarity":"SSR","name":"【パンダ】音無 律"},{"rarity":"SSR","name":"【ヤギ】冬樹 イヴ"},{"rarity":"SSR","name":"【わんこ】桃世 もも"},{"rarity":"SSR","name":"【夏祭り】松島 みちる"},{"rarity":"SSR","name":"【宝石】朝比奈 龍季"},{"rarity":"SSR","name":"【春】我妻 浅梨"},{"rarity":"SSR","name":"【シャツ】東雲 アイラ"},{"rarity":"SSR","name":"【追跡】冬樹 ノエル"},{"rarity":"SSR","name":"【伊賀忍】服部 梓"},{"rarity":"SSR","name":"【花嫁】服部 梓"},{"rarity":"SSR","name":"【GW】東雲 アイラ"},{"rarity":"SSR","name":"【猛獣使い】神凪 怜"},{"rarity":"SSR","name":"【特級】犬川 寧々"},{"rarity":"SSR","name":"【温泉】白藤 香ノ葉"},{"rarity":"SSR","name":"【牧場】エレン"},{"rarity":"SSR","name":"【七夕】冬樹 ノエル"},{"rarity":"SSR","name":"【争奪】南 智花"},{"rarity":"SSR","name":"【花火】冬樹 イヴ"},{"rarity":"SSR","name":"【ベレー帽】冬樹 イヴ"},{"rarity":"SSR","name":"【裏方】椎名 ゆかり"},{"rarity":"SSR","name":"【探偵】遊佐 鳴子"},{"rarity":"SSR","name":"【花火】立華 卯衣"},{"rarity":"SSR","name":"【聖夜】氷川 紗妃"},{"rarity":"SSR","name":"【救出】冷泉 葵"},{"rarity":"SSR","name":"【リバース】水無月 風子"},{"rarity":"SSR","name":"【救出】冬樹 イヴ"},{"rarity":"SSR","name":"【浪漫】霧塚 萌木"},{"rarity":"SSR","name":"【勉強】雀 明鈴"},{"rarity":"SSR","name":"【沖縄】冬樹 イヴ"},{"rarity":"SSR","name":"【流しっこ】李 小蓮"},{"rarity":"SSR","name":"【京都】我妻 浅梨"},{"rarity":"SSR","name":"【夜プール】椎名 ゆかり"},{"rarity":"SSR","name":"【カナヅチ】神凪 怜"},{"rarity":"SSR","name":"【使命】浦白 七撫"},{"rarity":"SSR","name":"【決着】来栖 焔"},{"rarity":"SSR","name":"【激辛】雀 明鈴"},{"rarity":"SSR","name":"【汐ファン】立華 卯衣"},{"rarity":"SSR","name":"【花色】白藤 香ノ葉"},{"rarity":"SSR","name":"【別府】楯野 望"},{"rarity":"SSR","name":"【進軍】シャルロット"},{"rarity":"SSR","name":"【争奪】岸田 夏海"},{"rarity":"SSR","name":"【キョンシー】雀 明鈴"},{"rarity":"SSR","name":"【覚醒】如月 天"},{"rarity":"SSR","name":"【悪魔】音無 律"},{"rarity":"SSR","name":"【文化祭】李 小蓮"},{"rarity":"SSR","name":"【裏世界】ヤヨイ"},{"rarity":"SSR","name":"【お手入】野薔薇 姫"},{"rarity":"SSR","name":"【３周年】東雲 アイラ"},{"rarity":"SSR","name":"【京都】白藤 香ノ葉"},{"rarity":"SSR","name":"【ロンドン】南 智花"},{"rarity":"SSR","name":"【お菓子の】霧塚 萌木"},{"rarity":"SSR","name":"【夢魔】氷川 紗妃"},{"rarity":"SSR","name":"【一年】南 智花"},{"rarity":"SSR","name":"【灰被り】霧塚 萌木"},{"rarity":"SSR","name":"【浴衣】瑠璃川 秋穂"},{"rarity":"SSR","name":"【水中】楯野 望"},{"rarity":"SSR","name":"【料理】シャルロット"},{"rarity":"SSR","name":"【猫カフェ】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【身体測定】神凪 怜"},{"rarity":"SSR","name":"【出征】月宮 沙那"},{"rarity":"SSR","name":"【風鈴】風槍 ミナ"},{"rarity":"SSR","name":"【筋トレ】リゼット"},{"rarity":"SSR","name":"【チョコ】雪白 ましろ"},{"rarity":"SSR","name":"【正月】楠木 ありす"},{"rarity":"SSR","name":"【別府】越水 ソフィア"},{"rarity":"SSR","name":"【天高気清】冬樹 ノエル"},{"rarity":"SSR","name":"【菜の花】岸田 夏海"},{"rarity":"SSR","name":"【運命】南 智花"},{"rarity":"SSR","name":"【ライバル】エレン"},{"rarity":"SSR","name":"【裏世界】結城 聖奈"},{"rarity":"SSR","name":"【聖夜】瑠璃川 秋穂"},{"rarity":"SSR","name":"【月見】我妻 浅梨"},{"rarity":"SSR","name":"【月見】月宮 沙那"},{"rarity":"SSR","name":"【NASA】守谷 月詠"},{"rarity":"SSR","name":"【選抜】相馬 レナ"},{"rarity":"SSR","name":"【ベッド】東雲 アイラ"},{"rarity":"SSR","name":"【国造り】武田 虎千代"},{"rarity":"SSR","name":"【スパ】エレン"},{"rarity":"SSR","name":"【レース】冷泉 葵"},{"rarity":"SSR","name":"【初披露】音無 律"},{"rarity":"SSR","name":"【店番】水無月 風子"},{"rarity":"SSR","name":"【別人】服部 梓"},{"rarity":"SSR","name":"【忍者】風槍 ミナ"},{"rarity":"SSR","name":"【暴露】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【贈り物】松島 みちる"},{"rarity":"SSR","name":"【嘆き】七喜 ちひろ"},{"rarity":"SSR","name":"【ジングル】朝比奈 龍季"},{"rarity":"SSR","name":"【最終儀式】神凪 怜"},{"rarity":"SSR","name":"【雪まみれ】与那嶺 里菜"},{"rarity":"SSR","name":"【花嫁】冬樹 イヴ"},{"rarity":"SSR","name":"【紅葉】冷泉 葵"},{"rarity":"SSR","name":"【対決】来栖 焔"},{"rarity":"SSR","name":"【カカオ】冷泉 葵"},{"rarity":"SSR","name":"【チョコ】服部 梓"},{"rarity":"SSR","name":"【聖夜】白藤 香ノ葉"},{"rarity":"SSR","name":"【警察犬】水瀬 薫子"},{"rarity":"SSR","name":"【宝石】里中 花梨"},{"rarity":"SSR","name":"【看護師】シャルロット"},{"rarity":"SSR","name":"【花見】与那嶺 里菜"},{"rarity":"SSR","name":"【花嫁】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【シュシュ】氷川 紗妃"},{"rarity":"SSR","name":"【リバース】南 智花"},{"rarity":"SSR","name":"【夜風】小鳥遊 自由"},{"rarity":"SSR","name":"【京都】双美 心"},{"rarity":"SSR","name":"【軍長】武田 虎千代"},{"rarity":"SSR","name":"【サンタ】霧塚 萌木"},{"rarity":"SSR","name":"【花見】白藤 香ノ葉"},{"rarity":"SSR","name":"【裏世界】服部 梓"},{"rarity":"SSR","name":"【王女】犬川 寧々"},{"rarity":"SSR","name":"【上海】生天目 つかさ"},{"rarity":"SSR","name":"【物語】岸田 夏海"},{"rarity":"SSR","name":"【深海魚】遊佐 鳴子"},{"rarity":"SSR","name":"【チョコ】海老名 あやせ"},{"rarity":"SSR","name":"【お菓子】野薔薇 姫"},{"rarity":"SSR","name":"【決着】双美 心"},{"rarity":"SSR","name":"【やる気】皇 絢香"},{"rarity":"SSR","name":"【語らい】神凪 怜"},{"rarity":"SSR","name":"【約束】白藤 香ノ葉"},{"rarity":"SSR","name":"【怪奇】遊佐 鳴子"},{"rarity":"SSR","name":"【選抜】守谷 月詠"},{"rarity":"SSR","name":"【スパ】冬樹 ノエル"},{"rarity":"SSR","name":"【自転車】与那嶺 里菜"},{"rarity":"SSR","name":"【決意】我妻 浅梨"},{"rarity":"SSR","name":"【カボチャ】小鳥遊 自由"},{"rarity":"SSR","name":"【選抜】冬樹 ノエル"},{"rarity":"SSR","name":"【アメコミ】円野 真理佳"},{"rarity":"SSR","name":"【野営】ヤヨイ"},{"rarity":"SSR","name":"【父】岸田 夏海"},{"rarity":"SSR","name":"【お給仕】仲月 さら"},{"rarity":"SSR","name":"【神輿】生天目 つかさ"},{"rarity":"SSR","name":"【弾初め】雀 明鈴"},{"rarity":"SSR","name":"【雪】ヤヨイ"},{"rarity":"SSR","name":"【妖怪】冷泉 葵"},{"rarity":"SSR","name":"【勝負】メアリー"},{"rarity":"SSR","name":"【制服】立華 卯衣"},{"rarity":"SSR","name":"【タロット】七喜 ちひろ"},{"rarity":"SSR","name":"【GS】守谷 月詠"},{"rarity":"SSR","name":"【彼シャツ】守谷 月詠"},{"rarity":"SSR","name":"【新年】浦白 七撫"},{"rarity":"SSR","name":"【カボチャ】野薔薇 姫"},{"rarity":"SSR","name":"【聖夜】エレン"},{"rarity":"SSR","name":"【銀河鉄道】東雲 アイラ"},{"rarity":"SSR","name":"【アイドル】ヤヨイ"},{"rarity":"SSR","name":"【クチバシ】楯野 望"},{"rarity":"SSR","name":"【夏祭り】月宮 沙那"},{"rarity":"SSR","name":"【花見】浦白 七撫"},{"rarity":"SSR","name":"【決意】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【一心】李 小蓮"},{"rarity":"SSR","name":"【ジム】生天目 つかさ"},{"rarity":"SSR","name":"【特級】水無月 風子"},{"rarity":"SSR","name":"【穴場】メアリー"},{"rarity":"SSR","name":"【ホラー】支倉 刀子"},{"rarity":"SSR","name":"【沖縄】与那嶺 里菜"},{"rarity":"SSR","name":"【果物】楠木 ありす"},{"rarity":"SSR","name":"【激闘】相馬 レナ"},{"rarity":"SSR","name":"【紅茶】小鳥遊 自由"},{"rarity":"SSR","name":"【化粧】鳴海 純"},{"rarity":"SSR","name":"【魔法祭】鳴海 純"},{"rarity":"SSR","name":"【沖縄】守谷 月詠"},{"rarity":"SSR","name":"【挨拶】南 智花"},{"rarity":"SSR","name":"【夜プール】間宮 千佳"},{"rarity":"SSR","name":"【ゲーセン】雪白 ましろ"},{"rarity":"SSR","name":"【正月】朱鷺坂 チトセ"},{"rarity":"SSR","name":"【田舎】南条 恋"},{"rarity":"SSR","name":"【夜プール】東雲 アイラ"},{"rarity":"SSR","name":"【山野草】朝比奈 龍季"},{"rarity":"SSR","name":"【忍情】服部 梓"},{"rarity":"SSR","name":"【沖縄】白藤 香ノ葉"},{"rarity":"SSR","name":"【パーティ】東雲 アイラ"},{"rarity":"SSR","name":"【温泉】生天目 つかさ"},{"rarity":"SR","name":"【始祖十家】我妻 浅梨"},{"rarity":"SR","name":"【過去】朝比奈 龍季"},{"rarity":"SR","name":"【騎士】楯野 望"},{"rarity":"SR","name":"【巫女】我妻 浅梨"},{"rarity":"SR","name":"【温泉街】越水 ソフィア"},{"rarity":"SR","name":"【完遂】雀 明鈴"},{"rarity":"SR","name":"【雪祭】皇 絢香"},{"rarity":"SR","name":"【完遂】七喜 ちひろ"},{"rarity":"SR","name":"【過去】朱鷺坂 チトセ"},{"rarity":"SR","name":"【観劇】仲月 さら"},{"rarity":"SR","name":"【品格】神宮寺 初音"},{"rarity":"SR","name":"【指示】楯野 望"},{"rarity":"SR","name":"【清涼】結城 聖奈"},{"rarity":"SR","name":"【異界】守谷 月詠"},{"rarity":"SR","name":"【完遂】楯野 望"},{"rarity":"SR","name":"【花嫁】ヤヨイ"},{"rarity":"SR","name":"【かまくら】仲月 さら"},{"rarity":"SR","name":"【チョコ】瑠璃川 秋穂"},{"rarity":"SR","name":"【希望】楠木 ありす"},{"rarity":"SR","name":"【チア】皇 絢香"},{"rarity":"SR","name":"【チア】冷泉 葵"},{"rarity":"SR","name":"【完遂】東雲 アイラ"},{"rarity":"SR","name":"【師弟】エレン"},{"rarity":"SR","name":"【ドレス】野薔薇 姫"},{"rarity":"SR","name":"【焦燥】宍戸 結希"},{"rarity":"SR","name":"【渚】皇 絢香"},{"rarity":"SR","name":"【狼女】朝比奈 龍季"},{"rarity":"SR","name":"【憂慮】水瀬 薫子"},{"rarity":"SR","name":"【童話】霧塚 萌木"},{"rarity":"SR","name":"【水やり】皇 絢香"},{"rarity":"SR","name":"【特級】守谷 月詠"},{"rarity":"SR","name":"【過去】月宮 沙那"},{"rarity":"SR","name":"【ゴースト】西原 ゆえ子"},{"rarity":"SR","name":"【選抜】水無月 風子"},{"rarity":"SR","name":"【贈り物】シャルロット"},{"rarity":"SR","name":"【完遂】エミリア"},{"rarity":"SR","name":"【ジム】白藤 香ノ葉"},{"rarity":"SR","name":"【調査】宍戸 結希"},{"rarity":"SR","name":"【沖縄】海老名 あやせ"},{"rarity":"SR","name":"【夕涼み】椎名 ゆかり"},{"rarity":"SR","name":"【夏祭り】楠木 ありす"},{"rarity":"SR","name":"【椎茸】与那嶺 里菜"},{"rarity":"SR","name":"【水着】朱鷺坂 チトセ"},{"rarity":"SR","name":"【魔法祭】冬樹 ノエル"},{"rarity":"SR","name":"【破魔矢】双美 心"},{"rarity":"SR","name":"【初体験】相馬 レナ"},{"rarity":"SR","name":"【チョコ】白藤 香ノ葉"},{"rarity":"SR","name":"【花火】神宮寺 初音"},{"rarity":"SR","name":"【完遂】神凪 怜"},{"rarity":"SR","name":"【船】水瀬 薫子"},{"rarity":"SR","name":"【渚】李 小蓮"},{"rarity":"SR","name":"【望郷】朱鷺坂 チトセ"},{"rarity":"SR","name":"【花嫁】遊佐 鳴子"},{"rarity":"SR","name":"【処罰】氷川 紗妃"},{"rarity":"SR","name":"【温泉】守谷 月詠"},{"rarity":"SR","name":"【初対面？】立華 卯衣"},{"rarity":"SR","name":"【梅雨】海老名 あやせ"},{"rarity":"SR","name":"【完遂】霧塚 萌木"},{"rarity":"SR","name":"【縁】冷泉 葵"},{"rarity":"SR","name":"【夢幻】松島 みちる"},{"rarity":"SR","name":"【贈り物】瑠璃川 秋穂"},{"rarity":"SR","name":"【クルーズ】神宮寺 初音"},{"rarity":"SR","name":"【完遂】冬樹 ノエル"},{"rarity":"SR","name":"【書き初め】南条 恋"},{"rarity":"SR","name":"【巡回】結城 聖奈"},{"rarity":"SR","name":"【何度でも】南 智花"},{"rarity":"SR","name":"【弱点】東雲 アイラ"},{"rarity":"SR","name":"【特級】李 小蓮"},{"rarity":"SR","name":"【卒業】武田 虎千代"},{"rarity":"SR","name":"【聖夜】メアリー"},{"rarity":"SR","name":"【京都】間宮 千佳"},{"rarity":"SR","name":"【選抜】如月 天"},{"rarity":"SR","name":"【テロ】瑠璃川 春乃"},{"rarity":"SR","name":"【宇宙】双美 心"},{"rarity":"SR","name":"【嫉妬】白藤 香ノ葉"},{"rarity":"SR","name":"【戦争】西原 ゆえ子"},{"rarity":"SR","name":"【復活祭】エミリア"},{"rarity":"SR","name":"【インド】越水 ソフィア"},{"rarity":"SR","name":"【月見餅】双美 心"},{"rarity":"SR","name":"【未知】南 智花"},{"rarity":"SR","name":"【特級】相馬 レナ"},{"rarity":"SR","name":"【総選挙】東雲 アイラ"},{"rarity":"SR","name":"【ロシア】我妻 浅梨"},{"rarity":"SR","name":"【開運厄除】水無月 風子"},{"rarity":"SR","name":"【ひな祭り】仲月 さら"},{"rarity":"SR","name":"【選抜】鳴海 純"},{"rarity":"SR","name":"【完遂】エレン"},{"rarity":"SR","name":"【特級】遊佐 鳴子"},{"rarity":"SR","name":"【メイド】エレン"},{"rarity":"SR","name":"【追跡失敗】岸田 夏海"},{"rarity":"SR","name":"【実地試験】来栖 焔"},{"rarity":"SR","name":"【別府】犬川 寧々"},{"rarity":"SR","name":"【戦闘】雀 明鈴"},{"rarity":"SR","name":"【チョコ】神凪 怜"},{"rarity":"SR","name":"【チョコ】氷川 紗妃"},{"rarity":"SR","name":"【完遂】犬川 寧々"},{"rarity":"SR","name":"【水属性】与那嶺 里菜"},{"rarity":"SR","name":"【ロンドン】我妻 浅梨"},{"rarity":"SR","name":"【ロンドン】月宮 沙那"},{"rarity":"SR","name":"【制服】南条 恋"},{"rarity":"SR","name":"【接近】エミリア"},{"rarity":"SR","name":"【しろ】相馬 レナ"},{"rarity":"SR","name":"【特級】音無 律"},{"rarity":"SR","name":"【完遂】宍戸 結希"},{"rarity":"SR","name":"【特級】メアリー"},{"rarity":"SR","name":"【弾語り】音無 律"},{"rarity":"SR","name":"【ツリー】ヤヨイ"},{"rarity":"SR","name":"【選抜】結城 聖奈"},{"rarity":"SR","name":"【即売会】来栖 焔"},{"rarity":"SR","name":"【梅雨】楯野 望"},{"rarity":"SR","name":"【裏世界】楯野 望"},{"rarity":"SR","name":"【ジム】朱鷺坂 チトセ"},{"rarity":"SR","name":"【失態】来栖 焔"},{"rarity":"SR","name":"【選抜】小鳥遊 自由"},{"rarity":"SR","name":"【チア】桃世 もも"},{"rarity":"SR","name":"【ウサ耳】雪白 ましろ"},{"rarity":"SR","name":"【救出】仲月 さら"},{"rarity":"SR","name":"【使命】桃世 もも"},{"rarity":"SR","name":"【日常】瑠璃川 春乃"},{"rarity":"SR","name":"【身体測定】椎名 ゆかり"},{"rarity":"SR","name":"【特級】冷泉 葵"},{"rarity":"SR","name":"【予感】宍戸 結希"},{"rarity":"SR","name":"【出動】神宮寺 初音"},{"rarity":"SR","name":"【見舞】松島 みちる"},{"rarity":"SR","name":"【巫女】神凪 怜"},{"rarity":"SR","name":"【嘴広鸛】南条 恋"},{"rarity":"SR","name":"【焦り】支倉 刀子"},{"rarity":"SR","name":"【小説版】南 智花"},{"rarity":"SR","name":"【料理人】里中 花梨"},{"rarity":"SR","name":"【使徒】シャルロット"},{"rarity":"SR","name":"【卒業】心＆絢香"},{"rarity":"SR","name":"【沖縄】朝比奈 龍季"},{"rarity":"SR","name":"【即売会】霧塚 萌木"},{"rarity":"SR","name":"【鬼神】生天目 つかさ"},{"rarity":"SR","name":"【体験】双美 心"},{"rarity":"SR","name":"【驚愕】里中 花梨"},{"rarity":"SR","name":"【水遁】服部 梓"},{"rarity":"SR","name":"【初売り】瑠璃川 春乃"},{"rarity":"SR","name":"【救出】朝比奈 龍季"},{"rarity":"SR","name":"【サッカー】如月 天"},{"rarity":"SR","name":"【桜】楯野 望"},{"rarity":"SR","name":"【情報】エレン"},{"rarity":"SR","name":"【諦観】来栖 焔"},{"rarity":"SR","name":"【自転車】音無 律"},{"rarity":"SR","name":"【完遂】如月 天"},{"rarity":"SR","name":"【すっぱい】海老名 あやせ"},{"rarity":"SR","name":"【田舎】小鳥遊 自由"},{"rarity":"SR","name":"【ぱふぇ】冷泉 葵"},{"rarity":"SR","name":"【出征】鳴海 純"},{"rarity":"SR","name":"【必殺】服部 梓"},{"rarity":"SR","name":"【完遂】鳴海 純"},{"rarity":"SR","name":"【懐刀】月宮 沙那"},{"rarity":"SR","name":"【凄絶】服部 梓"},{"rarity":"SR","name":"【アシカ】桃世 もも"},{"rarity":"SR","name":"【月見】七喜 ちひろ"},{"rarity":"SR","name":"【旅行】相馬 レナ"},{"rarity":"SR","name":"【カカオ】水瀬 薫子"},{"rarity":"SR","name":"【夜プール】メアリー"},{"rarity":"SR","name":"【市女笠】冬樹 イヴ"},{"rarity":"SR","name":"【朗読】霧塚 萌木"},{"rarity":"SR","name":"【ひな祭り】越水 ソフィア"},{"rarity":"SR","name":"【運命】岸田 夏海"},{"rarity":"SR","name":"【南国】南 智花"},{"rarity":"SR","name":"【羽】結城 聖奈"},{"rarity":"SR","name":"【2／14】水無月 風子"},{"rarity":"SR","name":"【歓喜】支倉 刀子"},{"rarity":"SR","name":"【上海】我妻 浅梨"},{"rarity":"SR","name":"【上海】月宮 沙那"},{"rarity":"SR","name":"【昼寝】生天目 つかさ"},{"rarity":"SR","name":"【新撰組】エミリア"},{"rarity":"SR","name":"【過去】双美 心"},{"rarity":"SR","name":"【選抜】越水 ソフィア"},{"rarity":"SR","name":"【ホラー】七喜 ちひろ"},{"rarity":"SR","name":"【案内】月宮 沙那"},{"rarity":"SR","name":"【灰街】白藤 香ノ葉"},{"rarity":"SR","name":"【完遂】椎名 ゆかり"},{"rarity":"SR","name":"【別府】服部 梓"},{"rarity":"SR","name":"【潜入】白藤 香ノ葉"},{"rarity":"SR","name":"【聖夜】西原 ゆえ子"},{"rarity":"SR","name":"【特級】南条 恋"},{"rarity":"SR","name":"【沖縄】霧塚 萌木"},{"rarity":"SR","name":"【犯人捜し】遊佐 鳴子"},{"rarity":"SR","name":"【介抱】水瀬 薫子"},{"rarity":"SR","name":"【夢幻】朱鷺坂 チトセ"},{"rarity":"SR","name":"【お団子】仲月 さら"},{"rarity":"SR","name":"【観光】椎名 ゆかり"},{"rarity":"SR","name":"【雪見】雪白 ましろ"},{"rarity":"SR","name":"【ロシア】水瀬 薫子"},{"rarity":"SR","name":"【雪祭】南条 恋"},{"rarity":"SR","name":"【シャツ】風槍 ミナ"},{"rarity":"SR","name":"【リゾート】桃世 もも"},{"rarity":"SR","name":"【アイドル】エミリア"},{"rarity":"SR","name":"【号令】エレン"},{"rarity":"SR","name":"【映画】間宮 千佳"},{"rarity":"SR","name":"【食べ過ぎ】風槍 ミナ"},{"rarity":"SR","name":"【見届け】海老名 あやせ"},{"rarity":"SR","name":"【普段着】与那嶺 里菜"},{"rarity":"SR","name":"【生存】間宮 千佳"},{"rarity":"SR","name":"【花見】桃世 もも"},{"rarity":"SR","name":"【プール】エレン"},{"rarity":"SR","name":"【ノリノリ】武田 虎千代"},{"rarity":"SR","name":"【旅行】守谷 月詠"},{"rarity":"SR","name":"【水飛沫】与那嶺 里菜"},{"rarity":"SR","name":"【働き者】仲月 さら"},{"rarity":"SR","name":"【お昼休み】瑠璃川 秋穂"},{"rarity":"SR","name":"【お月見】犬川 寧々"},{"rarity":"SR","name":"【裏世界】里中 花梨"},{"rarity":"SR","name":"【完遂】結城 聖奈"},{"rarity":"SR","name":"【過去】松島 みちる"},{"rarity":"SR","name":"【鉄壁】雀 明鈴"},{"rarity":"SR","name":"【フープ】冬樹 ノエル"},{"rarity":"SR","name":"【月見】支倉 刀子"},{"rarity":"SR","name":"【鯨沈】生天目 つかさ"},{"rarity":"SR","name":"【チア】楠木 ありす"},{"rarity":"SR","name":"【決意】間宮 千佳"},{"rarity":"SR","name":"【メイド】岸田 夏海"},{"rarity":"SR","name":"【選抜】楯野 望"},{"rarity":"SR","name":"【過去】雪白 ましろ"},{"rarity":"SR","name":"【奮闘】椎名 ゆかり"},{"rarity":"SR","name":"【テロ】相馬 レナ"},{"rarity":"SR","name":"【ぷれぜん】越水 ソフィア"},{"rarity":"SR","name":"【必殺技】円野 真理佳"},{"rarity":"SR","name":"【選抜】宍戸 結希"},{"rarity":"SR","name":"【救出】我妻 浅梨"},{"rarity":"SR","name":"【花見】仲月 さら"},{"rarity":"SR","name":"【運動会】南 智花"},{"rarity":"SR","name":"【GS】円野 真理佳"},{"rarity":"SR","name":"【七夕】鳴海 純"},{"rarity":"SR","name":"【ひな祭り】我妻 浅梨"},{"rarity":"SR","name":"【ハカセ】相馬 レナ"},{"rarity":"SR","name":"【本物？】生天目 つかさ"},{"rarity":"SR","name":"【市場】桃世 もも"},{"rarity":"SR","name":"【チョコ】如月 天"},{"rarity":"SR","name":"【メイド】如月 天"},{"rarity":"SR","name":"【聖夜】水瀬 薫子"},{"rarity":"SR","name":"【命】生天目 つかさ"},{"rarity":"SR","name":"【紅葉】野薔薇 姫"},{"rarity":"SR","name":"【沖縄】宍戸 結希"},{"rarity":"SR","name":"【沖縄】西原 ゆえ子"},{"rarity":"SR","name":"【大晦日】皇 絢香"},{"rarity":"SR","name":"【カカオ】エレン"},{"rarity":"SR","name":"【聖地】楠木 ありす"},{"rarity":"SR","name":"【お給仕】浦白 七撫"},{"rarity":"SR","name":"【筋トレ】守谷 月詠"},{"rarity":"SR","name":"【過去】水瀬 薫子"},{"rarity":"SR","name":"【地下】来栖 焔"},{"rarity":"SR","name":"【戦争】雪白 ましろ"},{"rarity":"SR","name":"【花嫁】野薔薇 姫"},{"rarity":"SR","name":"【不器用】支倉 刀子"},{"rarity":"SR","name":"【新年】李 小蓮"},{"rarity":"SR","name":"【功夫】雀 明鈴"},{"rarity":"SR","name":"【絶叫】音無 律"},{"rarity":"SR","name":"【まくら】鳴海 純"},{"rarity":"SR","name":"【羽子板】相馬 レナ"},{"rarity":"SR","name":"【フランス】月宮 沙那"},{"rarity":"SR","name":"【仮装】水瀬 薫子"},{"rarity":"SR","name":"【推理】冬樹 ノエル"},{"rarity":"SR","name":"【小説版】間宮 千佳"},{"rarity":"SR","name":"【不審】霧塚 萌木"},{"rarity":"SR","name":"【贈り物】鳴海 純"},{"rarity":"SR","name":"【VR】双美 心"},{"rarity":"SR","name":"【サファリ】服部 梓"},{"rarity":"SR","name":"【悲憤】七喜 ちひろ"},{"rarity":"SR","name":"【冷徹】冬樹 イヴ"},{"rarity":"SR","name":"【リス】南条 恋"},{"rarity":"SR","name":"【温泉街】エミリア"},{"rarity":"SR","name":"【月見】服部 梓"},{"rarity":"SR","name":"【完遂】南条 恋"},{"rarity":"SR","name":"【狼男】ヤヨイ"},{"rarity":"SR","name":"【顕現】リゼット"},{"rarity":"SR","name":"【聖夜】如月 天"},{"rarity":"SR","name":"【裏世界】朝比奈 龍季"},{"rarity":"SR","name":"【常連】朝比奈 龍季"},{"rarity":"SR","name":"【サンタ】水瀬 薫子"},{"rarity":"SR","name":"【卒業】生天目 つかさ"},{"rarity":"SR","name":"【パジャマ】楠木 ありす"},{"rarity":"SR","name":"【仇敵】楠木 ありす"},{"rarity":"SR","name":"【特級】月宮 沙那"},{"rarity":"SR","name":"【特級】我妻 浅梨"},{"rarity":"SR","name":"【聖夜】瑠璃川 春乃"},{"rarity":"SR","name":"【GW】生天目 つかさ"},{"rarity":"SR","name":"【二年参り】如月 天"},{"rarity":"SR","name":"【コンビニ】野薔薇 姫"},{"rarity":"SR","name":"【渚】与那嶺 里菜"},{"rarity":"SR","name":"【バンカラ】朝比奈 龍季"},{"rarity":"SR","name":"【鎮火】越水 ソフィア"},{"rarity":"SR","name":"【完遂】ヤヨイ"},{"rarity":"SR","name":"【フランス】李 小蓮"},{"rarity":"SR","name":"【ゲーマー】鳴海 純"},{"rarity":"SR","name":"【運動会】里中 花梨"},{"rarity":"SR","name":"【制服】雪白 ましろ"},{"rarity":"SR","name":"【返り討ち】神宮寺 初音"},{"rarity":"SR","name":"【別府】氷川 紗妃"},{"rarity":"SR","name":"【花嫁】冷泉 葵"},{"rarity":"SR","name":"【年明け】雪白 ましろ"},{"rarity":"SR","name":"【モデル】神凪 怜"},{"rarity":"SR","name":"【北海道】雀 明鈴"},{"rarity":"SR","name":"【博物館】エレン"},{"rarity":"SR","name":"【忠節】支倉 刀子"},{"rarity":"SR","name":"【童話】七喜 ちひろ"},{"rarity":"SR","name":"【花嫁】皇 絢香"},{"rarity":"SR","name":"【たい焼き】立華 卯衣"},{"rarity":"SR","name":"【料理】エミリア"},{"rarity":"SR","name":"【シロクマ】我妻 浅梨"},{"rarity":"SR","name":"【グリラジ】智花＆鳴子"},{"rarity":"SR","name":"【特級】如月 天"},{"rarity":"SR","name":"【花見】相馬 レナ"},{"rarity":"SR","name":"【ニワトリ】李 小蓮"},{"rarity":"SR","name":"【完遂】冬樹 イヴ"},{"rarity":"SR","name":"【ホラー】野薔薇 姫"},{"rarity":"SR","name":"【たこ焼き】間宮 千佳"},{"rarity":"SR","name":"【完遂】氷川 紗妃"},{"rarity":"SR","name":"【文化祭】冬樹 イヴ"},{"rarity":"SR","name":"【悲劇】遊佐 鳴子"},{"rarity":"SR","name":"【南国】西原 ゆえ子"},{"rarity":"SR","name":"【救援】氷川 紗妃"},{"rarity":"SR","name":"【豆まき】朱鷺坂 チトセ"},{"rarity":"SR","name":"【仮想空間】遊佐 鳴子"},{"rarity":"SR","name":"【完遂】支倉 刀子"},{"rarity":"SR","name":"【水着】鳴海 純"},{"rarity":"SR","name":"【満腹】雀 明鈴"},{"rarity":"SR","name":"【正月】小鳥遊 自由"},{"rarity":"SR","name":"【完遂】楠木 ありす"},{"rarity":"SR","name":"【財宝】西原 ゆえ子"},{"rarity":"SR","name":"【覚悟】南 智花"},{"rarity":"SR","name":"【冬の日】海老名 あやせ"},{"rarity":"SR","name":"【コーヒー】間宮 千佳"},{"rarity":"SR","name":"【別府】支倉 刀子"},{"rarity":"SR","name":"【特級】楠木 ありす"},{"rarity":"SR","name":"【魔法祭】冬樹 イヴ"},{"rarity":"SR","name":"【温泉】冷泉 葵"},{"rarity":"SR","name":"【チョコ】霧塚 萌木"},{"rarity":"SR","name":"【死守】朝比奈 龍季"},{"rarity":"SR","name":"【パーティ】我妻 浅梨"},{"rarity":"SR","name":"【崩壊】雀 明鈴"},{"rarity":"SR","name":"【聖夜】相馬 レナ"},{"rarity":"SR","name":"【果物】犬川 寧々"},{"rarity":"SR","name":"【制服】楯野 望"},{"rarity":"SR","name":"【別れ】月宮 沙那"},{"rarity":"SR","name":"【魔法祭】越水 ソフィア"},{"rarity":"SR","name":"【願い】遊佐 鳴子"},{"rarity":"SR","name":"【アメコミ】相馬 レナ"},{"rarity":"SR","name":"【迷子】我妻 浅梨"},{"rarity":"SR","name":"【過去】遊佐 鳴子"},{"rarity":"SR","name":"【ジム】エミリア"},{"rarity":"SR","name":"【救出】野薔薇 姫"},{"rarity":"SR","name":"【選抜】浦白 七撫"},{"rarity":"SR","name":"【制服】風槍 ミナ"},{"rarity":"SR","name":"【夜プール】エミリア"},{"rarity":"SR","name":"【救援】松島 みちる"},{"rarity":"SR","name":"【友】越水 ソフィア"},{"rarity":"SR","name":"【上陸】仲月 さら"},{"rarity":"SR","name":"【ハート】瑠璃川 秋穂"},{"rarity":"SR","name":"【記憶】生天目 つかさ"},{"rarity":"SR","name":"【完遂】風槍 ミナ"},{"rarity":"SR","name":"【メイド】遊佐 鳴子"},{"rarity":"SR","name":"【完遂】間宮 千佳"},{"rarity":"SR","name":"【祈り】エミリア"},{"rarity":"SR","name":"【夏祭り】神凪 怜"},{"rarity":"SR","name":"【膝枕】海老名 あやせ"},{"rarity":"SR","name":"【冬突入】風槍 ミナ"},{"rarity":"SR","name":"【ウサギ】仲月 さら"},{"rarity":"SR","name":"【ホール】冷泉 葵"},{"rarity":"SR","name":"【過去】武田 虎千代"},{"rarity":"SR","name":"【小説版】水無月 風子"},{"rarity":"SR","name":"【完遂】越水 ソフィア"},{"rarity":"SR","name":"【総選挙】冬樹 イヴ"},{"rarity":"SR","name":"【肝試し】月宮 沙那"},{"rarity":"SR","name":"【豆まき】椎名 ゆかり"},{"rarity":"SR","name":"【お月見】与那嶺 里菜"},{"rarity":"SR","name":"【妖怪】海老名 あやせ"},{"rarity":"SR","name":"【混乱】武田 虎千代"},{"rarity":"SR","name":"【花嫁】岸田 夏海"},{"rarity":"SR","name":"【完遂】白藤 香ノ葉"},{"rarity":"SR","name":"【桜】南条 恋"},{"rarity":"SR","name":"【水着】月宮 沙那"},{"rarity":"SR","name":"【リゾート】里中 花梨"},{"rarity":"SR","name":"【観察】仲月 さら"},{"rarity":"SR","name":"【聖夜】立華 卯衣"},{"rarity":"SR","name":"【運命】神凪 怜"},{"rarity":"SR","name":"【サトリ】皇 絢香"},{"rarity":"SR","name":"【はろいん】相馬 レナ"},{"rarity":"SR","name":"【仮想空間】楯野 望"},{"rarity":"SR","name":"【危険区域】宍戸 結希"},{"rarity":"SR","name":"【焦燥】双美 心"},{"rarity":"SR","name":"【花嫁】水瀬 薫子"},{"rarity":"SR","name":"【アイドル】武田 虎千代"},{"rarity":"SR","name":"【文化祭】宍戸 結希"},{"rarity":"SR","name":"【豆まき】楯野 望"},{"rarity":"SR","name":"【特級】白藤 香ノ葉"},{"rarity":"SR","name":"【お化け】桃世 もも"},{"rarity":"SR","name":"【予知】西原 ゆえ子"},{"rarity":"SR","name":"【休日】神宮寺 初音"},{"rarity":"SR","name":"【完遂】円野 真理佳"},{"rarity":"SR","name":"【巫女】音無 律"},{"rarity":"SR","name":"【餅つき】里中 花梨"},{"rarity":"SR","name":"【即売会】支倉 刀子"},{"rarity":"SR","name":"【NASA】風槍 ミナ"},{"rarity":"SR","name":"【魔女】皇 絢香"},{"rarity":"SR","name":"【特級】シャルロット"},{"rarity":"SR","name":"【裏世界】桃世 もも"},{"rarity":"SR","name":"【完遂】与那嶺 里菜"},{"rarity":"SR","name":"【モノ造り】間宮 千佳"},{"rarity":"SR","name":"【ココア】楠木 ありす"},{"rarity":"SR","name":"【願い】野薔薇 姫"},{"rarity":"SR","name":"【完遂】シャルロット"},{"rarity":"SR","name":"【人形】冷泉 葵"},{"rarity":"SR","name":"【過去】野薔薇 姫"},{"rarity":"SR","name":"【特級】与那嶺 里菜"},{"rarity":"SR","name":"【向日葵】如月 天"},{"rarity":"SR","name":"【聖夜】雀 明鈴"},{"rarity":"SR","name":"【裏世界】冷泉 葵"},{"rarity":"SR","name":"【凱旋】立華 卯衣"},{"rarity":"SR","name":"【ペンギン】間宮 千佳"},{"rarity":"SR","name":"【警官】南条 恋"},{"rarity":"SR","name":"【裏世界】皇 絢香"},{"rarity":"SR","name":"【間欠泉】越水 ソフィア"},{"rarity":"SR","name":"【上海】守谷 月詠"},{"rarity":"SR","name":"【希望】海老名 あやせ"},{"rarity":"SR","name":"【チョコ】七喜 ちひろ"},{"rarity":"SR","name":"【チョコ】メアリー"},{"rarity":"SR","name":"【上陸】エレン"},{"rarity":"SR","name":"【潜水艦】武田 虎千代"},{"rarity":"SR","name":"【水着】雀 明鈴"},{"rarity":"SR","name":"【克己】七喜 ちひろ"},{"rarity":"SR","name":"【せんす】犬川 寧々"},{"rarity":"SR","name":"【フランス】シャルロット"},{"rarity":"SR","name":"【霧】西原 ゆえ子"},{"rarity":"SR","name":"【制覇】野薔薇 姫"},{"rarity":"SR","name":"【カカオ】双美 心"},{"rarity":"SR","name":"【チョコ】音無 律"},{"rarity":"SR","name":"【特級】楯野 望"},{"rarity":"SR","name":"【お守り】遊佐 鳴子"},{"rarity":"SR","name":"【花嫁】瑠璃川 春乃"},{"rarity":"SR","name":"【偵察】円野 真理佳"},{"rarity":"SR","name":"【特級】瑠璃川 秋穂"},{"rarity":"SR","name":"【春日向】結城 聖奈"},{"rarity":"SR","name":"【うたた寝】海老名 あやせ"},{"rarity":"SR","name":"【花見】小鳥遊 自由"},{"rarity":"SR","name":"【スパ】神宮寺 初音"},{"rarity":"SR","name":"【決意】李 小蓮"},{"rarity":"SR","name":"【沖縄】支倉 刀子"},{"rarity":"SR","name":"【裏世界】メアリー"},{"rarity":"SR","name":"【完遂】瑠璃川 秋穂"},{"rarity":"SR","name":"【魔法祭】結城 聖奈"},{"rarity":"SR","name":"【眼鏡】椎名 ゆかり"},{"rarity":"SR","name":"【完遂】冷泉 葵"},{"rarity":"SR","name":"【完遂】皇 絢香"},{"rarity":"SR","name":"【救助】氷川 紗妃"},{"rarity":"SR","name":"【夜プール】松島 みちる"},{"rarity":"SR","name":"【チア】エミリア"},{"rarity":"SR","name":"【ぱたぱた】相馬 レナ"},{"rarity":"SR","name":"【使命】音無 律"},{"rarity":"SR","name":"【花見】雀 明鈴"},{"rarity":"SR","name":"【店番】海老名 あやせ"},{"rarity":"SR","name":"【恥じらい】氷川 紗妃"},{"rarity":"SR","name":"【争奪】瑠璃川 秋穂"},{"rarity":"SR","name":"【太もも】冬樹 ノエル"},{"rarity":"SR","name":"【凪】椎名 ゆかり"},{"rarity":"SR","name":"【マフラー】我妻 浅梨"},{"rarity":"SR","name":"【福の神】岸田 夏海"},{"rarity":"SR","name":"【登壇】武田 虎千代"},{"rarity":"SR","name":"【選抜】間宮 千佳"},{"rarity":"SR","name":"【泣き虫】間宮 千佳"},{"rarity":"SR","name":"【尋問】月宮 沙那"},{"rarity":"SR","name":"【出動】水無月 風子"},{"rarity":"SR","name":"【即売会】間宮 千佳"},{"rarity":"SR","name":"【花見】越水 ソフィア"},{"rarity":"SR","name":"【海賊】我妻 浅梨"},{"rarity":"SR","name":"【日本代表】冷泉 葵"},{"rarity":"SR","name":"【完遂】音無 律"},{"rarity":"SR","name":"【荒野】朝比奈 龍季"},{"rarity":"SR","name":"【望遠鏡】立華 卯衣"},{"rarity":"SR","name":"【完遂】メアリー"},{"rarity":"SR","name":"【疲労】楯野 望"},{"rarity":"SR","name":"【満悦】メアリー"},{"rarity":"SR","name":"【選抜】風槍 ミナ"},{"rarity":"SR","name":"【麻辣】雀 明鈴"},{"rarity":"SR","name":"【クルーズ】武田 虎千代"},{"rarity":"SR","name":"【弔い】里中 花梨"},{"rarity":"SR","name":"【完遂】浦白 七撫"},{"rarity":"SR","name":"【死守】結城 聖奈"},{"rarity":"SR","name":"【修行】生天目 つかさ"},{"rarity":"SR","name":"【妖怪】白藤 香ノ葉"},{"rarity":"SR","name":"【聖夜】里中 花梨"},{"rarity":"SR","name":"【特級】海老名 あやせ"},{"rarity":"SR","name":"【水着】冬樹 ノエル"},{"rarity":"SR","name":"【歓待】李 小蓮"},{"rarity":"SR","name":"【争奪】白藤 香ノ葉"},{"rarity":"SR","name":"【別府】シャルロット"},{"rarity":"SR","name":"【探索】水瀬 薫子"},{"rarity":"SR","name":"【完遂】李 小蓮"},{"rarity":"SR","name":"【UFO】遊佐 鳴子"},{"rarity":"SR","name":"【ミイラ】瑠璃川 春乃"},{"rarity":"SR","name":"【制服】楠木 ありす"},{"rarity":"SR","name":"【キス】鳴海 純"},{"rarity":"SR","name":"【ひな祭り】ヤヨイ"},{"rarity":"SR","name":"【アイドル】仲月 さら"},{"rarity":"SR","name":"【魔女】楠木 ありす"},{"rarity":"SR","name":"【月見】立華 卯衣"},{"rarity":"SR","name":"【花見】冬樹 ノエル"},{"rarity":"SR","name":"【聖夜】宍戸 結希"},{"rarity":"SR","name":"【オカ研】西原 ゆえ子"},{"rarity":"SR","name":"【月見】エレン"},{"rarity":"SR","name":"【アイドル】東雲 アイラ"},{"rarity":"SR","name":"【渚】服部 梓"},{"rarity":"SR","name":"【妖怪】エミリア"},{"rarity":"SR","name":"【DJ】宍戸 結希"},{"rarity":"SR","name":"【悲劇】神宮寺 初音"},{"rarity":"SR","name":"【花より】里中 花梨"},{"rarity":"SR","name":"【水着】浦白 七撫"},{"rarity":"SR","name":"【リンゴ飴】冷泉 葵"},{"rarity":"SR","name":"【♡】白藤 香ノ葉"},{"rarity":"SR","name":"【お月見】朝比奈 龍季"},{"rarity":"SR","name":"【チャージ】宍戸 結希"},{"rarity":"SR","name":"【奪還】李 小蓮"},{"rarity":"SR","name":"【出征】生天目 つかさ"},{"rarity":"SR","name":"【夏祭り】来栖 焔"},{"rarity":"SR","name":"【凱旋】朱鷺坂 チトセ"},{"rarity":"SR","name":"【水遊び】間宮 千佳"},{"rarity":"SR","name":"【特級】雪白 ましろ"},{"rarity":"SR","name":"【完遂】松島 みちる"},{"rarity":"SR","name":"【おみくじ】西原 ゆえ子"},{"rarity":"SR","name":"【張り込み】岸田 夏海"},{"rarity":"SR","name":"【カリブ】エミリア"},{"rarity":"SR","name":"【ハート？】氷川 紗妃"},{"rarity":"SR","name":"【聖夜】七喜 ちひろ"},{"rarity":"SR","name":"【完遂】南 智花"},{"rarity":"SR","name":"【完遂】雪白 ましろ"},{"rarity":"SR","name":"【視察】結城 聖奈"},{"rarity":"SR","name":"【花言葉】楠木 ありす"},{"rarity":"SR","name":"【浪漫】エレン"},{"rarity":"SR","name":"【肝試し】氷川 紗妃"},{"rarity":"SR","name":"【ロシア】武田 虎千代"},{"rarity":"SR","name":"【警戒】越水 ソフィア"},{"rarity":"SR","name":"【花嫁】支倉 刀子"},{"rarity":"SR","name":"【サハラ】越水 ソフィア"},{"rarity":"SR","name":"【叛逆】越水 ソフィア"},{"rarity":"SR","name":"【裏世界】間宮 千佳"},{"rarity":"SR","name":"【余裕】海老名 あやせ"},{"rarity":"SR","name":"【チョコ】武田 虎千代"},{"rarity":"SR","name":"【汐ファン】水瀬 薫子"},{"rarity":"SR","name":"【花嫁】椎名 ゆかり"},{"rarity":"SR","name":"【特殊任務】音無 律"},{"rarity":"SR","name":"【砂】瑠璃川 春乃"},{"rarity":"SR","name":"【願い】武田 虎千代"},{"rarity":"SR","name":"【回復】椎名 ゆかり"},{"rarity":"SR","name":"【運命】宍戸 結希"},{"rarity":"SR","name":"【復興】月宮 沙那"},{"rarity":"SR","name":"【月見】鳴海 純"},{"rarity":"SR","name":"【過去】椎名 ゆかり"},{"rarity":"SR","name":"【完遂】神宮寺 初音"},{"rarity":"SR","name":"【夜這】小鳥遊 自由"},{"rarity":"SR","name":"【緊急出動】水瀬 薫子"},{"rarity":"SR","name":"【取締】冬樹 イヴ"},{"rarity":"SR","name":"【戯画】南条 恋"},{"rarity":"SR","name":"【文化祭】神宮寺 初音"},{"rarity":"SR","name":"【おせち】瑠璃川 秋穂"},{"rarity":"SR","name":"【自転車】東雲 アイラ"},{"rarity":"SR","name":"【GW】鳴海 純"},{"rarity":"SR","name":"【月見】如月 天"},{"rarity":"SR","name":"【選抜】瑠璃川 秋穂"},{"rarity":"SR","name":"【着物】氷川 紗妃"},{"rarity":"SR","name":"【七夕】南 智花"},{"rarity":"SR","name":"【友達以上】小鳥遊 自由"},{"rarity":"SR","name":"【魔法祭】海老名 あやせ"},{"rarity":"SR","name":"【生存】野薔薇 姫"},{"rarity":"SR","name":"【最終儀式】音無 律"},{"rarity":"SR","name":"【沖縄】仲月 さら"},{"rarity":"SR","name":"【カフェ】間宮 千佳"},{"rarity":"SR","name":"【田舎】遊佐 鳴子"},{"rarity":"SR","name":"【締め出し】冬樹 イヴ"},{"rarity":"SR","name":"【親友】南条 恋"},{"rarity":"SR","name":"【童話】月宮 沙那"},{"rarity":"SR","name":"【身体測定】西原 ゆえ子"},{"rarity":"SR","name":"【チョコ】相馬 レナ"},{"rarity":"SR","name":"【お給仕】松島 みちる"},{"rarity":"SR","name":"【たこ焼き】朝比奈 龍季"},{"rarity":"SR","name":"【過去】霧塚 萌木"},{"rarity":"SR","name":"【霧】ヤヨイ"},{"rarity":"SR","name":"【チョコ】南 智花"},{"rarity":"SR","name":"【進軍】メアリー"},{"rarity":"SR","name":"【訓練】守谷 月詠"},{"rarity":"SR","name":"【潮風】如月 天"},{"rarity":"SR","name":"【特級】服部 梓"},{"rarity":"SR","name":"【文化祭】里中 花梨"},{"rarity":"SR","name":"【病】瑠璃川 春乃"},{"rarity":"SR","name":"【メイド？】鳴海 純"},{"rarity":"SR","name":"【仮想空間】宍戸 結希"},{"rarity":"SR","name":"【夏祭り】野薔薇 姫"},{"rarity":"SR","name":"【平和】ヤヨイ"},{"rarity":"SR","name":"【白塔】守谷 月詠"},{"rarity":"SR","name":"【冬到来】西原 ゆえ子"},{"rarity":"SR","name":"【肝試し】間宮 千佳"},{"rarity":"SR","name":"【怪物】朱鷺坂 チトセ"},{"rarity":"SR","name":"【小説版】野薔薇 姫"},{"rarity":"SR","name":"【別府】南条 恋"},{"rarity":"SR","name":"【GW】犬川 寧々"},{"rarity":"SR","name":"【挑戦】結城 聖奈"},{"rarity":"SR","name":"【選抜】白藤 香ノ葉"},{"rarity":"SR","name":"【プール】遊佐 鳴子"},{"rarity":"SR","name":"【超暑い】風槍 ミナ"},{"rarity":"SR","name":"【仲間】守谷 月詠"},{"rarity":"SR","name":"【選抜】桃世 もも"},{"rarity":"SR","name":"【完遂】我妻 浅梨"},{"rarity":"SR","name":"【完遂】月宮 沙那"},{"rarity":"SR","name":"【完遂】海老名 あやせ"},{"rarity":"SR","name":"【一撃】松島 みちる"},{"rarity":"SR","name":"【修行寺】朱鷺坂 チトセ"},{"rarity":"SR","name":"【選抜】円野 真理佳"},{"rarity":"SR","name":"【仇敵】神宮寺 初音"},{"rarity":"SR","name":"【妖精】シャルロット"},{"rarity":"SR","name":"【進軍】南条 恋"},{"rarity":"SR","name":"【夢幻】南条 恋"},{"rarity":"SR","name":"【バカンス】野薔薇 姫"},{"rarity":"SR","name":"【ハッピー】越水 ソフィア"},{"rarity":"SR","name":"【巫女】シャルロット"},{"rarity":"SR","name":"【生徒会】結城 聖奈"},{"rarity":"SR","name":"【完遂】岸田 夏海"},{"rarity":"SR","name":"【制服】服部 梓"},{"rarity":"SR","name":"【完遂】水瀬 薫子"},{"rarity":"SR","name":"【ゲーム】楯野 望"},{"rarity":"SR","name":"【特級】浦白 七撫"},{"rarity":"SR","name":"【保育】犬川 寧々"},{"rarity":"SR","name":"【ショー】鳴海 純"},{"rarity":"SR","name":"【遮那王】武田 虎千代"},{"rarity":"SR","name":"【トモデチ】相馬 レナ"},{"rarity":"SR","name":"【チア】霧塚 萌木"},{"rarity":"SR","name":"【雪祭】松島 みちる"},{"rarity":"SR","name":"【巫女】与那嶺 里菜"},{"rarity":"SR","name":"【ロンドン】円野 真理佳"},{"rarity":"SR","name":"【別府】岸田 夏海"},{"rarity":"SR","name":"【シャツ】瑠璃川 秋穂"},{"rarity":"SR","name":"【チョコ】立華 卯衣"},{"rarity":"SR","name":"【完遂】西原 ゆえ子"},{"rarity":"SR","name":"【世話】音無 律"},{"rarity":"SR","name":"【特級】西原 ゆえ子"},{"rarity":"SR","name":"【覚悟】水無月 風子"},{"rarity":"SR","name":"【制服】双美 心"},{"rarity":"SR","name":"【夢幻】仲月 さら"},{"rarity":"SR","name":"【いつもの】守谷 月詠"},{"rarity":"SR","name":"【熊退治】里中 花梨"},{"rarity":"SR","name":"【崩壊】里中 花梨"},{"rarity":"SR","name":"【足掻き】メアリー"},{"rarity":"SR","name":"【即売会】雪白 ましろ"},{"rarity":"SR","name":"【過去】音無 律"},{"rarity":"SR","name":"【勉強】李 小蓮"},{"rarity":"SR","name":"【制服】シャルロット"},{"rarity":"SR","name":"【過去】メアリー"},{"rarity":"SR","name":"【GW】越水 ソフィア"},{"rarity":"SR","name":"【雪】皇 絢香"},{"rarity":"SR","name":"【過去】冷泉 葵"},{"rarity":"SR","name":"【フェス】音無 律"},{"rarity":"SR","name":"【聖夜】結城 聖奈"},{"rarity":"SR","name":"【魔法祭】メアリー"},{"rarity":"SR","name":"【シャツ】シャルロット"},{"rarity":"SR","name":"【キャット】瑠璃川 春乃"},{"rarity":"SR","name":"【雪合戦】メアリー"},{"rarity":"SR","name":"【正直者】冬樹 ノエル"},{"rarity":"SR","name":"【浪漫】七喜 ちひろ"},{"rarity":"SR","name":"【鍛錬】武田 虎千代"},{"rarity":"SR","name":"【魔女】円野 真理佳"},{"rarity":"SR","name":"【凱旋】楯野 望"},{"rarity":"SR","name":"【剣士】神凪 怜"},{"rarity":"SR","name":"【制服】水瀬 薫子"},{"rarity":"SR","name":"【リゾート】七喜 ちひろ"},{"rarity":"SR","name":"【日常】犬川 寧々"},{"rarity":"SR","name":"【猛暑】鳴海 純"},{"rarity":"SR","name":"【ピエロ】松島 みちる"},{"rarity":"SR","name":"【羽子板】与那嶺 里菜"},{"rarity":"SR","name":"【特級】朱鷺坂 チトセ"},{"rarity":"SR","name":"【異界】冷泉 葵"},{"rarity":"SR","name":"【到来】ヤヨイ"},{"rarity":"SR","name":"【西部劇】メアリー"},{"rarity":"SR","name":"【植物園】相馬 レナ"},{"rarity":"SR","name":"【即売会】月宮 沙那"},{"rarity":"SR","name":"【花嫁】南 智花"},{"rarity":"SR","name":"【秘書】風槍 ミナ"},{"rarity":"SR","name":"【カカオ】結城 聖奈"},{"rarity":"SR","name":"【選抜】我妻 浅梨"},{"rarity":"SR","name":"【覚悟】メアリー"},{"rarity":"SR","name":"【おてんば】朝比奈 龍季"},{"rarity":"SR","name":"【我慢】服部 梓"},{"rarity":"SR","name":"【完遂】桃世 もも"},{"rarity":"SR","name":"【即売会】李 小蓮"},{"rarity":"SR","name":"【ショコラ】南 智花"},{"rarity":"SR","name":"【悪役】円野 真理佳"},{"rarity":"SR","name":"【叛逆】来栖 焔"},{"rarity":"SR","name":"【修行】ヤヨイ"},{"rarity":"SR","name":"【王子様】霧塚 萌木"},{"rarity":"SR","name":"【狼】南条 恋"},{"rarity":"SR","name":"【主】月宮 沙那"},{"rarity":"SR","name":"【清ロ】岸田 夏海"},{"rarity":"SR","name":"【完遂】生天目 つかさ"},{"rarity":"SR","name":"【月光】桃世 もも"},{"rarity":"SR","name":"【遠征】桃世 もも"},{"rarity":"SR","name":"【運動会】シャルロット"},{"rarity":"SR","name":"【店番】月宮 沙那"},{"rarity":"SR","name":"【選抜】冬樹 イヴ"},{"rarity":"SR","name":"【完遂】仲月 さら"},{"rarity":"SR","name":"【スパ】ヤヨイ"},{"rarity":"SR","name":"【夏祭り】海老名 あやせ"},{"rarity":"SR","name":"【おおじい】越水 ソフィア"},{"rarity":"SR","name":"【アラーム】浦白 七撫"},{"rarity":"SR","name":"【諦観】宍戸 結希"},{"rarity":"SR","name":"【怪盗】生天目 つかさ"},{"rarity":"SR","name":"【防衛】雪白 ましろ"},{"rarity":"SR","name":"【ドラム】雀 明鈴"},{"rarity":"SR","name":"【同種】立華 卯衣"},{"rarity":"SR","name":"【大急ぎ】皇 絢香"},{"rarity":"SR","name":"【感想戦】守谷 月詠"},{"rarity":"SR","name":"【復興】仲月 さら"},{"rarity":"SR","name":"【気合】与那嶺 里菜"},{"rarity":"SR","name":"【アイドル】南 智花"},{"rarity":"SR","name":"【見舞】南 智花"},{"rarity":"SR","name":"【剣道】支倉 刀子"},{"rarity":"SR","name":"【異界】雪白 ましろ"},{"rarity":"SR","name":"【完遂】朝比奈 龍季"},{"rarity":"SR","name":"【地底湖】水瀬 薫子"},{"rarity":"SR","name":"【即売会】越水 ソフィア"},{"rarity":"SR","name":"【お祝い】シャルロット"},{"rarity":"SR","name":"【応援団】楯野 望"},{"rarity":"SR","name":"【特級】朝比奈 龍季"},{"rarity":"SR","name":"【選抜】南 智花"},{"rarity":"SR","name":"【嗔恚】霧塚 萌木"},{"rarity":"SR","name":"【汐ファン】松島 みちる"},{"rarity":"SR","name":"【二ツ半】李 小蓮"},{"rarity":"SR","name":"【部屋】音無 律"},{"rarity":"SR","name":"【身体測定】浦白 七撫"},{"rarity":"SR","name":"【ひな祭り】生天目 つかさ"},{"rarity":"SR","name":"【抵抗】如月 天"},{"rarity":"SR","name":"【過去】間宮 千佳"},{"rarity":"SR","name":"【チョコ】月宮 沙那"},{"rarity":"SR","name":"【保健委員】椎名 ゆかり"},{"rarity":"SR","name":"【奇襲】ヤヨイ"},{"rarity":"SR","name":"【猫】南 智花"},{"rarity":"SR","name":"【ひな祭り】東雲 アイラ"},{"rarity":"SR","name":"【テント】桃世 もも"},{"rarity":"SR","name":"【NASA】立華 卯衣"},{"rarity":"SR","name":"【表裏】双美 心"},{"rarity":"SR","name":"【村人】小鳥遊 自由"},{"rarity":"SR","name":"【童話】雪白 ましろ"},{"rarity":"SR","name":"【選抜】服部 梓"},{"rarity":"SR","name":"【お給仕】鳴海 純"},{"rarity":"SR","name":"【夏祭り】岸田 夏海"},{"rarity":"SR","name":"【登山】エレン"},{"rarity":"SR","name":"【運動会】メアリー"},{"rarity":"SR","name":"【魔法祭】我妻 浅梨"},{"rarity":"SR","name":"【アイドル】双美 心"},{"rarity":"SR","name":"【忍者】朝比奈 龍季"},{"rarity":"SR","name":"【聖夜】楠木 ありす"},{"rarity":"SR","name":"【一日署長】皇 絢香"},{"rarity":"SR","name":"【暴れ屋】メアリー"},{"rarity":"SR","name":"【宇宙】如月 天"},{"rarity":"SR","name":"【月見】小鳥遊 自由"},{"rarity":"SR","name":"【差し入れ】南 智花"},{"rarity":"SR","name":"【大深度】岸田 夏海"},{"rarity":"SR","name":"【即売会】神凪 怜"},{"rarity":"SR","name":"【過去】海老名 あやせ"},{"rarity":"SR","name":"【ロンドン】越水 ソフィア"},{"rarity":"SR","name":"【温泉街】双美 心"},{"rarity":"SR","name":"【夢幻】楠木 ありす"},{"rarity":"SR","name":"【糸】白藤 香ノ葉"},{"rarity":"SR","name":"【沖縄】越水 ソフィア"},{"rarity":"SR","name":"【浪漫】シャルロット"},{"rarity":"SR","name":"【遠征】西原 ゆえ子"},{"rarity":"SR","name":"【チョコ】来栖 焔"},{"rarity":"SR","name":"【棒倒し】来栖 焔"},{"rarity":"SR","name":"【悲劇】支倉 刀子"},{"rarity":"SR","name":"【桜】桃世 もも"},{"rarity":"SR","name":"【予感】円野 真理佳"},{"rarity":"SR","name":"【共闘】瑠璃川 秋穂"},{"rarity":"SR","name":"【完遂】相馬 レナ"},{"rarity":"SR","name":"【絶望】東雲 アイラ"},{"rarity":"SR","name":"【花嫁】瑠璃川 秋穂"},{"rarity":"SR","name":"【死守】メアリー"},{"rarity":"SR","name":"【マスク】メアリー"},{"rarity":"SR","name":"【平穏】浦白 七撫"},{"rarity":"SR","name":"【完遂】遊佐 鳴子"},{"rarity":"SR","name":"【親代わり】月宮 沙那"},{"rarity":"SR","name":"【お化け】冬樹 ノエル"},{"rarity":"SR","name":"【上陸】冷泉 葵"},{"rarity":"SR","name":"【デート】松島 みちる"},{"rarity":"SR","name":"【桜】楠木 ありす"},{"rarity":"SR","name":"【完遂】瑠璃川 春乃"},{"rarity":"SR","name":"【赤備え】支倉 刀子"},{"rarity":"SR","name":"【裏世界】宍戸 結希"},{"rarity":"SR","name":"【信頼】与那嶺 里菜"},{"rarity":"SR","name":"【予感】シャルロット"},{"rarity":"SR","name":"【温泉宿】シャルロット"},{"rarity":"SR","name":"【思い出】来栖 焔"},{"rarity":"SR","name":"【選抜】椎名 ゆかり"},{"rarity":"SR","name":"【過去】氷川 紗妃"},{"rarity":"SR","name":"【年始休み】宍戸 結希"},{"rarity":"SR","name":"【魔法祭】神凪 怜"},{"rarity":"SR","name":"【制服】守谷 月詠"},{"rarity":"SR","name":"【京都】生天目 つかさ"},{"rarity":"SR","name":"【お給仕】瑠璃川 春乃"},{"rarity":"SR","name":"【猫】犬川 寧々"},{"rarity":"SR","name":"【選抜】野薔薇 姫"},{"rarity":"SR","name":"【ダンス】音無 律"},{"rarity":"SR","name":"【即売会】野薔薇 姫"},{"rarity":"SR","name":"【囚われ】椎名 ゆかり"},{"rarity":"SR","name":"【特級】霧塚 萌木"},{"rarity":"SR","name":"【医師】遊佐 鳴子"},{"rarity":"SR","name":"【劇場】武田 虎千代"},{"rarity":"SR","name":"【彼シャツ】野薔薇 姫"},{"rarity":"SR","name":"【日陰】西原 ゆえ子"},{"rarity":"SR","name":"【汗】雀 明鈴"},{"rarity":"SR","name":"【チョコ】朝比奈 龍季"},{"rarity":"SR","name":"【新年】風槍 ミナ"},{"rarity":"SR","name":"【雪】神凪 怜"},{"rarity":"SR","name":"【選抜】立華 卯衣"},{"rarity":"SR","name":"【過去】支倉 刀子"},{"rarity":"SR","name":"【紫水晶】西原 ゆえ子"},{"rarity":"SR","name":"【過去】神凪 怜"},{"rarity":"SR","name":"【完遂】来栖 焔"},{"rarity":"SR","name":"【ホラー】水無月 風子"},{"rarity":"SR","name":"【照れ】霧塚 萌木"},{"rarity":"SR","name":"【旅行】結城 聖奈"},{"rarity":"SR","name":"【出征】冬樹 イヴ"},{"rarity":"SR","name":"【打ち上げ】如月 天"},{"rarity":"SR","name":"【花嫁】宍戸 結希"},{"rarity":"SR","name":"【オシャレ】結城 聖奈"},{"rarity":"SR","name":"【NASA】小鳥遊 自由"},{"rarity":"SR","name":"【見届け】服部 梓"},{"rarity":"SR","name":"【夢魔】西原 ゆえ子"},{"rarity":"SR","name":"【ジェット】円野 真理佳"},{"rarity":"SR","name":"【過去】シャルロット"},{"rarity":"SR","name":"【羊】我妻 浅梨"},{"rarity":"SR","name":"【過去】エミリア"},{"rarity":"SR","name":"【魔法祭】雀 明鈴"},{"rarity":"SR","name":"【サンタ服】来栖 焔"},{"rarity":"SR","name":"【運動会】浦白 七撫"},{"rarity":"SR","name":"【ツリー】エミリア"},{"rarity":"SR","name":"【ベース】南条 恋"},{"rarity":"SR","name":"【月見】水無月 風子"},{"rarity":"SR","name":"【魔法祭】エミリア"},{"rarity":"SR","name":"【彼シャツ】ヤヨイ"},{"rarity":"SR","name":"【小説版】メアリー"},{"rarity":"SR","name":"【出征】我妻 浅梨"},{"rarity":"SR","name":"【お月見】野薔薇 姫"},{"rarity":"SR","name":"【サファリ】与那嶺 里菜"},{"rarity":"SR","name":"【実験台】如月 天"},{"rarity":"SR","name":"【ニンジャ】エミリア"},{"rarity":"SR","name":"【完遂】守谷 月詠"},{"rarity":"SR","name":"【盗賊】神宮寺 初音"},{"rarity":"SR","name":"【ミスコン】双美 心"},{"rarity":"SR","name":"【制服】椎名 ゆかり"},{"rarity":"SR","name":"【過去】生天目 つかさ"},{"rarity":"SR","name":"【完遂】小鳥遊 自由"},{"rarity":"SR","name":"【驚き】松島 みちる"},{"rarity":"SR","name":"【君臨】東雲 アイラ"},{"rarity":"SR","name":"【聖夜】浦白 七撫"},{"rarity":"SR","name":"【宇宙】楯野 望"},{"rarity":"SR","name":"【決意】双美 心"},{"rarity":"SR","name":"【風紀】水無月 風子"},{"rarity":"SR","name":"【進軍】雀 明鈴"},{"rarity":"SR","name":"【花見】瑠璃川 秋穂"},{"rarity":"SR","name":"【アイドル】来栖 焔"},{"rarity":"SR","name":"【上海】水無月 風子"},{"rarity":"SR","name":"【チョコ】松島 みちる"},{"rarity":"SR","name":"【選抜】遊佐 鳴子"},{"rarity":"SR","name":"【決意】円野 真理佳"},{"rarity":"SR","name":"【漂流】雪白 ましろ"},{"rarity":"SR","name":"【選抜】来栖 焔"},{"rarity":"SR","name":"【特級】小鳥遊 自由"},{"rarity":"SR","name":"【特訓】メアリー"},{"rarity":"SR","name":"【完遂】里中 花梨"},{"rarity":"SR","name":"【特級】南 智花"},{"rarity":"SR","name":"【心配】鳴海 純"},{"rarity":"SR","name":"【特級】武田 虎千代"},{"rarity":"SR","name":"【年越し】雀 明鈴"},{"rarity":"SR","name":"【制裁】与那嶺 里菜"},{"rarity":"SR","name":"【餅】椎名 ゆかり"},{"rarity":"SR","name":"【恋愛経験】海老名 あやせ"},{"rarity":"SR","name":"【夢幻】海老名 あやせ"},{"rarity":"SR","name":"【使命】氷川 紗妃"},{"rarity":"SR","name":"【シロー】仲月 さら"},{"rarity":"SR","name":"【完遂】武田 虎千代"},{"rarity":"SR","name":"【船】支倉 刀子"},{"rarity":"SR","name":"【ケーキ】桃世 もも"},{"rarity":"SR","name":"【金魚】浦白 七撫"},{"rarity":"SR","name":"【治療法】瑠璃川 春乃"},{"rarity":"SR","name":"【サンタ服】月宮 沙那"},{"rarity":"SR","name":"【進軍】エミリア"},{"rarity":"SR","name":"【特殊任務】野薔薇 姫"},{"rarity":"SR","name":"【宝物】岸田 夏海"},{"rarity":"SR","name":"【サボり】音無 律"},{"rarity":"SR","name":"【プール】生天目 つかさ"},{"rarity":"SR","name":"【守護者】神凪 怜"},{"rarity":"SR","name":"【聖夜】円野 真理佳"},{"rarity":"SR","name":"【不安】仲月 さら"},{"rarity":"SR","name":"【田舎】椎名 ゆかり"},{"rarity":"SR","name":"【お土産】雪白 ましろ"},{"rarity":"SR","name":"【北極】冬樹 ノエル"},{"rarity":"SR","name":"【肝試し】冬樹 ノエル"},{"rarity":"SR","name":"【かぼちゃ】与那嶺 里菜"},{"rarity":"SR","name":"【逃走中】服部 梓"},{"rarity":"SR","name":"【戦闘】結城 聖奈"},{"rarity":"SR","name":"【チョコ】仲月 さら"},{"rarity":"SR","name":"【婿】与那嶺 里菜"},{"rarity":"SR","name":"【特級】結城 聖奈"},{"rarity":"SR","name":"【情義】小鳥遊 自由"},{"rarity":"SR","name":"【総選挙】水無月 風子"},{"rarity":"SR","name":"【選抜】海老名 あやせ"},{"rarity":"SR","name":"【一息】結城 聖奈"},{"rarity":"SR","name":"【花嫁】楠木 ありす"},{"rarity":"SR","name":"【水中】シャルロット"},{"rarity":"SR","name":"【復興】里中 花梨"},{"rarity":"SR","name":"【チョコ】桃世 もも"},{"rarity":"SR","name":"【ゾウ】椎名 ゆかり"},{"rarity":"SR","name":"【信念】円野 真理佳"},{"rarity":"SR","name":"【店番】エレン"},{"rarity":"SR","name":"【訓練】楯野 望"},{"rarity":"SR","name":"【汐ファン】守谷 月詠"},{"rarity":"SR","name":"【裏世界】冬樹 ノエル"},{"rarity":"SR","name":"【再訪】来栖 焔"},{"rarity":"SR","name":"【完遂】双美 心"},{"rarity":"SR","name":"【やる気】冷泉 葵"},{"rarity":"SR","name":"【プール】岸田 夏海"},{"rarity":"SR","name":"【京都】冬樹 イヴ"},{"rarity":"SR","name":"【ラピス】瑠璃川 秋穂"},{"rarity":"SR","name":"【占い】西原 ゆえ子"},{"rarity":"SR","name":"【目論見】遊佐 鳴子"},{"rarity":"SR","name":"【テロ】神凪 怜"},{"rarity":"SR","name":"【襲撃】ヤヨイ"},{"rarity":"SR","name":"【卒業】神凪 怜"},{"rarity":"SR","name":"【記憶】遊佐 鳴子"},{"rarity":"SR","name":"【その時】音無 律"},{"rarity":"SR","name":"【盗撮】瑠璃川 春乃"},{"rarity":"SR","name":"【果物】仲月 さら"},{"rarity":"SR","name":"【希望】雀 明鈴"},{"rarity":"SR","name":"【七夕】椎名 ゆかり"},{"rarity":"SR","name":"【包装】瑠璃川 春乃"},{"rarity":"SR","name":"【サンタ】生天目 つかさ"},{"rarity":"SR","name":"【殺陣】生天目 つかさ"},{"rarity":"SR","name":"【上海】南条 恋"},{"rarity":"SR","name":"【パジャマ】水無月 風子"},{"rarity":"SR","name":"【スパ】犬川 寧々"},{"rarity":"SR","name":"【オフ】鳴海 純"},{"rarity":"SR","name":"【総選挙】小鳥遊 自由"},{"rarity":"SR","name":"【完遂】服部 梓"},{"rarity":"SR","name":"【トンネル】海老名 あやせ"},{"rarity":"SR","name":"【過去】冬樹 イヴ"},{"rarity":"SR","name":"【見舞】白藤 香ノ葉"},{"rarity":"SR","name":"【仮装】生天目 つかさ"},{"rarity":"SR","name":"【やけくそ】楯野 望"},{"rarity":"SR","name":"【水着】雪白 ましろ"},{"rarity":"SR","name":"【花見】南 智花"},{"rarity":"SR","name":"【完遂】立華 卯衣"},{"rarity":"SR","name":"【ミスコン】シャルロット"},{"rarity":"SR","name":"【凱旋】東雲 アイラ"},{"rarity":"SR","name":"【選抜】東雲 アイラ"},{"rarity":"SR","name":"【叛逆】霧塚 萌木"},{"rarity":"SR","name":"【プール】李 小蓮"},{"rarity":"SR","name":"【上海】支倉 刀子"},{"rarity":"SR","name":"【ケータイ】朱鷺坂 チトセ"},{"rarity":"SR","name":"【過去】鳴海 純"},{"rarity":"SR","name":"【上海】小鳥遊 自由"},{"rarity":"SR","name":"【梅雨】雪白 ましろ"},{"rarity":"SR","name":"【怒り】朝比奈 龍季"},{"rarity":"SR","name":"【宝石】雪白 ましろ"},{"rarity":"SR","name":"【完遂】水無月 風子"},{"rarity":"SR","name":"【日常】間宮 千佳"},{"rarity":"SR","name":"【お泊り】仲月 さら"},{"rarity":"SR","name":"【完遂】野薔薇 姫"},{"rarity":"SR","name":"【フェス】鳴海 純"},{"rarity":"SR","name":"【戦士】小鳥遊 自由"},{"rarity":"SR","name":"【クルーズ】遊佐 鳴子"},{"rarity":"SR","name":"【チョコ】岸田 夏海"},{"rarity":"SR","name":"【救出】白藤 香ノ葉"},{"rarity":"SR","name":"【コンボ】鳴海 純"},{"rarity":"SR","name":"【フェス】如月 天"},{"rarity":"SR","name":"【別府】如月 天"},{"rarity":"R","name":"【任務】岸田 夏海"},{"rarity":"R","name":"【任務】水瀬 薫子"},{"rarity":"R","name":"雪白 ましろ"},{"rarity":"R","name":"【任務】雪白 ましろ"},{"rarity":"R","name":"松島 みちる"},{"rarity":"R","name":"【任務】松島 みちる"},{"rarity":"R","name":"【任務】来栖 焔"},{"rarity":"R","name":"【挨拶】冷泉 葵"},{"rarity":"R","name":"我妻 浅梨"},{"rarity":"R","name":"月宮 沙那"},{"rarity":"R","name":"如月 天"},{"rarity":"R","name":"【テニス】雪白 ましろ"},{"rarity":"R","name":"【恵方巻き】氷川 紗妃"},{"rarity":"R","name":"【任務】桃世 もも"},{"rarity":"R","name":"【怪談】遊佐 鳴子"},{"rarity":"R","name":"【任務】仲月 さら"},{"rarity":"R","name":"【任務】越水 ソフィア"},{"rarity":"R","name":"【女子高生】音無 律"},{"rarity":"R","name":"【任務】神宮寺 初音"},{"rarity":"R","name":"【変装】瑠璃川 春乃"},{"rarity":"R","name":"【任務】双美 心"},{"rarity":"R","name":"神凪 怜"},{"rarity":"R","name":"【おせち】李 小蓮"},{"rarity":"R","name":"桃世 もも"},{"rarity":"R","name":"【任務】服部 梓"},{"rarity":"R","name":"【任務】西原 ゆえ子"},{"rarity":"R","name":"西原 ゆえ子"},{"rarity":"R","name":"【水着選び】冬樹 ノエル"},{"rarity":"R","name":"【女子高生】守谷 月詠"},{"rarity":"R","name":"【パン】シャルロット"},{"rarity":"R","name":"【スケート】神宮寺 初音"},{"rarity":"R","name":"【任務】朝比奈 龍季"},{"rarity":"R","name":"【桜前線】椎名 ゆかり"},{"rarity":"R","name":"岸田 夏海"},{"rarity":"R","name":"【女子高生】椎名 ゆかり"},{"rarity":"R","name":"【不合理】結城 聖奈"},{"rarity":"R","name":"【任務】月宮 沙那"},{"rarity":"R","name":"【任務】我妻 浅梨"},{"rarity":"R","name":"【水着】楠木 ありす"},{"rarity":"R","name":"【任務】里中 花梨"},{"rarity":"R","name":"【雨】小鳥遊 自由"},{"rarity":"R","name":"【散策】来栖 焔"},{"rarity":"R","name":"【咖哩】李 小蓮"},{"rarity":"R","name":"守谷 月詠"},{"rarity":"R","name":"【合宿】エミリア"},{"rarity":"R","name":"【女子高生】岸田 夏海"},{"rarity":"R","name":"【お茶会】冷泉 葵"},{"rarity":"R","name":"【七夕】支倉 刀子"},{"rarity":"R","name":"【任務】立華 卯衣"},{"rarity":"R","name":"遊佐 鳴子"},{"rarity":"R","name":"【任務】南 智花"},{"rarity":"R","name":"【任務】野薔薇 姫"},{"rarity":"R","name":"【はっぴ】雀 明鈴"},{"rarity":"R","name":"【女子高生】神凪 怜"},{"rarity":"R","name":"【メイド】神宮寺 初音"},{"rarity":"R","name":"【3倍返し】白藤 香ノ葉"},{"rarity":"R","name":"野薔薇 姫"},{"rarity":"R","name":"【任務】武田 虎千代"},{"rarity":"R","name":"武田 虎千代"},{"rarity":"R","name":"【任務】相馬 レナ"},{"rarity":"R","name":"【任務】遊佐 鳴子"},{"rarity":"R","name":"【雪だるま】雪白 ましろ"},{"rarity":"R","name":"【命令】メアリー"},{"rarity":"R","name":"【任務】小鳥遊 自由"},{"rarity":"R","name":"小鳥遊 自由"},{"rarity":"R","name":"【任務】水無月 風子"},{"rarity":"R","name":"里中 花梨"},{"rarity":"R","name":"【お願い】冬樹 ノエル"},{"rarity":"R","name":"【お忍び】皇 絢香"},{"rarity":"R","name":"【屋台】李 小蓮"},{"rarity":"R","name":"【任務】守谷 月詠"},{"rarity":"R","name":"【任務】冬樹 ノエル"},{"rarity":"R","name":"【鍵盤】海老名 あやせ"},{"rarity":"R","name":"犬川 寧々"},{"rarity":"R","name":"【任務】東雲 アイラ"},{"rarity":"R","name":"東雲 アイラ"},{"rarity":"R","name":"【任務】ヤヨイ"},{"rarity":"R","name":"宍戸 結希"},{"rarity":"R","name":"七喜 ちひろ"},{"rarity":"R","name":"【任務】七喜 ちひろ"},{"rarity":"R","name":"【副会長】水瀬 薫子"},{"rarity":"R","name":"【任務】南条 恋"},{"rarity":"R","name":"【任務】結城 聖奈"},{"rarity":"R","name":"霧塚 萌木"},{"rarity":"R","name":"【成敗】朝比奈 龍季"},{"rarity":"R","name":"【任務】皇 絢香"},{"rarity":"R","name":"【任務】冷泉 葵"},{"rarity":"R","name":"【任務】椎名 ゆかり"},{"rarity":"R","name":"南 智花"},{"rarity":"R","name":"椎名 ゆかり"},{"rarity":"R","name":"【半分こ】音無 律"},{"rarity":"R","name":"【任務】メアリー"},{"rarity":"R","name":"【逢引き】水瀬 薫子"},{"rarity":"R","name":"【降誕祭】シャルロット"},{"rarity":"R","name":"【任務】音無 律"},{"rarity":"R","name":"【女子高生】間宮 千佳"},{"rarity":"R","name":"【任務】霧塚 萌木"},{"rarity":"R","name":"【任務】李 小蓮"},{"rarity":"R","name":"リゼット"},{"rarity":"R","name":"【警備】水無月 風子"},{"rarity":"R","name":"【任務】犬川 寧々"},{"rarity":"R","name":"【編み物】里中 花梨"},{"rarity":"R","name":"【任務】宍戸 結希"},{"rarity":"R","name":"【小さい】白藤 香ノ葉"},{"rarity":"R","name":"【勧誘】音無 律"},{"rarity":"R","name":"【ブーケ】瑠璃川 秋穂"},{"rarity":"R","name":"楠木 ありす"},{"rarity":"R","name":"【任務】楠木 ありす"},{"rarity":"R","name":"【任務】冬樹 イヴ"},{"rarity":"R","name":"冬樹 イヴ"},{"rarity":"R","name":"【梅雨】越水 ソフィア"},{"rarity":"R","name":"ヤヨイ・ロカ"},{"rarity":"R","name":"風槍 ミナ"},{"rarity":"R","name":"【任務】雀 明鈴"},{"rarity":"R","name":"【任務】瑠璃川 看乃"},{"rarity":"R","name":"【任務】楯野 望"},{"rarity":"R","name":"朱鷺坂 ちとせ"},{"rarity":"R","name":"【任務】エミリア"},{"rarity":"R","name":"双美 心"},{"rarity":"R","name":"支倉 刀子"},{"rarity":"R","name":"【任務】エレン"},{"rarity":"R","name":"【任務】浦白 七撫"},{"rarity":"R","name":"【任務】神凪 怜"},{"rarity":"R","name":"【任務】海老名 あやせ"},{"rarity":"R","name":"【野球】与那嶺 里菜"},{"rarity":"R","name":"服部 梓"},{"rarity":"R","name":"【任務】瑠璃川 秋穂"},{"rarity":"R","name":"【女子高生】南 智花"},{"rarity":"R","name":"生天目 つかさ"},{"rarity":"R","name":"【寝起き】野薔薇 姫"},{"rarity":"R","name":"【任務】シャルロット"},{"rarity":"R","name":"エレン・アメディック"},{"rarity":"R","name":"【任務】与那嶺 里菜"},{"rarity":"R","name":"与那嶺 里菜"},{"rarity":"R","name":"【任務】氷川 紗妃"},{"rarity":"R","name":"【卓球】朝比奈 龍季"},{"rarity":"R","name":"【任務】支倉 刀子"},{"rarity":"R","name":"浦白 七撫"},{"rarity":"R","name":"円野 真理佳"},{"rarity":"R","name":"【任務】円野 真理佳"},{"rarity":"R","name":"【任務】白藤 香ノ葉"},{"rarity":"R","name":"メアリー・ウィリアムズ"},{"rarity":"R","name":"【任務】生天目 つかさ"},{"rarity":"R","name":"シャルロット・ディオール"},{"rarity":"R","name":"【チア】間宮 千佳"},{"rarity":"R","name":"【任務】如月 天"},{"rarity":"R","name":"【任務】鳴海 純"},{"rarity":"R","name":"【任務】風槍 ミナ"},{"rarity":"R","name":"【任務】間宮 千佳"}],"videosByRarity":{"SSR":[],"SR":[],"R":[]},"images":{}}</script>
-
+  <script src="./cards.js"></script>
   <script>
     (function () {
       const GAS_URL = "https://script.google.com/macros/s/AKfycbyoj05pCO8gvAJwjL9FZOB67Y4xT1C3QTvvG0gsbf_lH9cvXeq6FTltORZ9vCam-9rT/exec";
-      const DB_NAME = "GachaPublicBundleDB_v6";
-      const STORE_NAME = "media";
+      const IMAGE_DIR = "./jpg_cards";
+      const VIDEO_DIR = "./videos";
 
-      let pool = [];
+      const EXTERNAL_VIDEOS = {
+        SSR: [
+          `${VIDEO_DIR}/SSR/My Movie 14.mp4`,
+          `${VIDEO_DIR}/SSR/My Movie 15.mp4`,
+          `${VIDEO_DIR}/SSR/SSR.mp4`,
+          `${VIDEO_DIR}/SSR/ssr.mp4`
+        ],
+        SR: [
+          `${VIDEO_DIR}/SR/My Movie 11.mp4`,
+          `${VIDEO_DIR}/SR/My Movie 12.mp4`,
+          `${VIDEO_DIR}/SR/My Movie 13.mp4`,
+          `${VIDEO_DIR}/SR/SR.mp4`,
+          `${VIDEO_DIR}/SR/sr.mp4`
+        ],
+        R: [
+          `${VIDEO_DIR}/R/My Movie 8.mp4`,
+          `${VIDEO_DIR}/R/My Movie 9.mp4`,
+          `${VIDEO_DIR}/R/My Movie 10.mp4`,
+          `${VIDEO_DIR}/R/R.mp4`,
+          `${VIDEO_DIR}/R/r.mp4`
+        ]
+      };
+
+      const FALLBACK_POOL = [
+        { rarity: "SSR", name: "SSRサンプル" },
+        { rarity: "SR",  name: "SRサンプル" },
+        { rarity: "R",   name: "Rサンプル" }
+      ];
+
+      let pool = FALLBACK_POOL.slice();
       let logs = [];
       let pulls = [];
       let currentIndex = 0;
       let phase = "idle";
-      let hasEmbeddedPool = false;
-      let hasEmbeddedVideos = false;
-      let hasEmbeddedImages = false;
-      let pendingNewCardImage = "";
-      let mediaData = {
-        videosByRarity: { SSR: [], SR: [], R: [] },
-        images: {}
-      };
       let videoTimer = null;
-
-      function defaultPool() {
-        const arr = [
-          { rarity: "SSR", name: "SSRキャラ01" },
-          { rarity: "SSR", name: "SSRキャラ02" },
-          { rarity: "SSR", name: "SSRキャラ03" },
-          { rarity: "SR", name: "SRキャラ01" },
-          { rarity: "SR", name: "SRキャラ02" },
-          { rarity: "SR", name: "SRキャラ03" },
-          { rarity: "SR", name: "SRキャラ04" },
-          { rarity: "SR", name: "SRキャラ05" }
-        ];
-        for (let i = 1; i <= 149; i++) {
-          arr.push({ rarity: "R", name: `Rキャラ${String(i).padStart(3, "0")}` });
-        }
-        return arr;
-      }
 
       function esc(s) {
         return String(s || "")
@@ -915,6 +626,10 @@
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;")
           .replace(/"/g, "&quot;");
+      }
+
+      function getCardImageSrc(cardName) {
+        return `${IMAGE_DIR}/${encodeURIComponent(String(cardName || "").trim())}.jpg`;
       }
 
       function formatTime(d) {
@@ -964,15 +679,19 @@
         }
         logs.slice(0, 10).forEach((raw) => {
           const item = normalizeLogItem(raw);
+          const thumbSrc = getCardImageSrc(item.cardName);
           const li = document.createElement("li");
           li.className = "log-item";
           li.innerHTML = `
-            <div class="log-line-1">
-              <span class="tag tag-${item.rarity}">${item.rarity}</span>
-              <span class="log-card-name">${esc(item.cardName)}</span>
+            <img class="log-thumb" src="${thumbSrc}" alt="${esc(item.cardName)}" onerror="this.style.visibility='hidden'">
+            <div class="log-body">
+              <div class="log-line-1">
+                <span class="tag tag-${item.rarity}">${item.rarity}</span>
+                <span class="log-card-name">${esc(item.cardName)}</span>
+              </div>
+              <div class="log-line-2">${esc(item.playerName)}さんがGET!!</div>
+              <div class="log-line-3">${esc(item.timestampText)}</div>
             </div>
-            <div class="log-line-2">${esc(item.playerName)}さんがGET!!</div>
-            <div class="log-line-3">${esc(item.timestampText)}</div>
           `;
           ul.appendChild(li);
         });
@@ -984,7 +703,7 @@
           const timer = setTimeout(() => {
             if (ctrl) ctrl.abort();
             reject(new Error("timeout"));
-          }, ms || 3500);
+          }, ms || 4000);
 
           fetch(url, Object.assign({}, options || {}, ctrl ? { signal: ctrl.signal } : {}))
             .then((res) => {
@@ -996,6 +715,43 @@
               reject(err);
             });
         });
+      }
+
+      function parsePoolList(list) {
+        if (!Array.isArray(list)) return [];
+        const out = [];
+        for (let i = 0; i < list.length; i++) {
+          const item = list[i];
+          if (!item) continue;
+          const rarity = String(item.rarity || "").trim().toUpperCase();
+          const name = String(item.name || "").trim();
+          if ((rarity === "SSR" || rarity === "SR" || rarity === "R") && name) {
+            out.push({ rarity, name });
+          }
+        }
+        return out;
+      }
+
+      async function loadExternalPool() {
+        try {
+          const res = await fetchWithTimeout(`./cards.json?t=${Date.now()}`, { method: "GET" }, 4000);
+          if (res.ok) {
+            const data = await res.json();
+            const rawList = Array.isArray(data) ? data : (Array.isArray(data.pool) ? data.pool : []);
+            const parsed = parsePoolList(rawList);
+            if (parsed.length > 0) {
+              pool = parsed;
+              return;
+            }
+          }
+        } catch {}
+
+        if (Array.isArray(window.GACHA_CARDS)) {
+          const parsedJs = parsePoolList(window.GACHA_CARDS);
+          if (parsedJs.length > 0) {
+            pool = parsedJs;
+          }
+        }
       }
 
       function pullLogs() {
@@ -1029,56 +785,6 @@
         }, 3500).catch(() => {});
       }
 
-      function loadBundleFromHTML() {
-        try {
-          const el = document.getElementById("embedded-bundle");
-          const raw = el ? el.textContent.trim() : "";
-          if (!raw || raw === "{}") return;
-          const b = JSON.parse(raw);
-          if (!b || typeof b !== "object") return;
-
-          if (Array.isArray(b.pool) && b.pool.length > 0) {
-            pool = b.pool;
-            hasEmbeddedPool = true;
-          }
-          if (b.videosByRarity && typeof b.videosByRarity === "object") {
-            const merged = Object.assign({ SSR: [], SR: [], R: [] }, b.videosByRarity);
-            if ((merged.SSR && merged.SSR.length) || (merged.SR && merged.SR.length) || (merged.R && merged.R.length)) {
-              mediaData.videosByRarity = merged;
-              hasEmbeddedVideos = true;
-            }
-          }
-          if (b.images && typeof b.images === "object" && Object.keys(b.images).length > 0) {
-            mediaData.images = b.images;
-            hasEmbeddedImages = true;
-          }
-        } catch {}
-      }
-
-      function loadPool() {
-        const keys = ["gacha_pool_v6", "gacha_pool_v5", "gacha_pool_v4", "gacha_pool_v3", "gacha_pool_v2", "gacha_card_pool"];
-        for (let i = 0; i < keys.length; i++) {
-          try {
-            const saved = localStorage.getItem(keys[i]);
-            if (saved) {
-              const parsed = JSON.parse(saved);
-              if (Array.isArray(parsed) && parsed.length > 0) {
-                pool = parsed;
-                return;
-              }
-            }
-          } catch {}
-        }
-        if (hasEmbeddedPool && pool.length > 0) return;
-        pool = defaultPool();
-      }
-
-      function savePoolToStorage() {
-        try {
-          localStorage.setItem("gacha_pool_v6", JSON.stringify(pool));
-        } catch {}
-      }
-
       function pickCard(srPlusOnly) {
         const ssr = pool.filter(x => x.rarity === "SSR");
         const sr = pool.filter(x => x.rarity === "SR");
@@ -1103,18 +809,6 @@
         if (items.some(c => c.rarity === "SSR")) return "SSR";
         if (items.some(c => c.rarity === "SR")) return "SR";
         return "R";
-      }
-
-      function getVideoForRarity(rarity) {
-        const byR = mediaData.videosByRarity || {};
-        if (Array.isArray(byR[rarity]) && byR[rarity].length > 0) {
-          return byR[rarity][Math.floor(Math.random() * byR[rarity].length)];
-        }
-        const all = [].concat(byR.SSR || [], byR.SR || [], byR.R || []);
-        if (all.length > 0) {
-          return all[Math.floor(Math.random() * all.length)];
-        }
-        return "";
       }
 
       function runPull(count) {
@@ -1154,6 +848,8 @@
         clearTimeout(videoTimer);
         const video = document.getElementById("gachaVideo");
         if (video) {
+          video.onended = null;
+          video.onerror = null;
           try {
             video.pause();
             video.removeAttribute("src");
@@ -1163,31 +859,49 @@
         }
       }
 
+      function playCandidateVideo(video, candidates, idx) {
+        if (!video || idx >= candidates.length) {
+          enterSingleFullscreen();
+          return;
+        }
+        const src = encodeURI(candidates[idx]);
+        video.classList.add("active");
+        video.src = src;
+        video.currentTime = 0;
+
+        video.onerror = () => {
+          playCandidateVideo(video, candidates, idx + 1);
+        };
+        video.onended = () => {
+          enterSingleFullscreen();
+        };
+
+        const p = video.play();
+        if (p && typeof p.catch === "function") {
+          p.catch(() => {
+            videoTimer = setTimeout(() => {
+              if (phase === "video") enterSingleFullscreen();
+            }, 1200);
+          });
+        }
+      }
+
       function startFullscreenGacha() {
         const fs = document.getElementById("gachaFullscreen");
         const video = document.getElementById("gachaVideo");
         const singleStage = document.getElementById("singleStage");
         const highest = getHighestRarity(pulls);
-        const src = getVideoForRarity(highest);
+        const rawList = EXTERNAL_VIDEOS[highest] || EXTERNAL_VIDEOS.R || [];
+        const shuffled = rawList.slice().sort(() => Math.random() - 0.5);
 
         document.getElementById("resultInlineBox").classList.remove("active");
         fs.classList.add("active");
         singleStage.classList.remove("active");
         clearTimeout(videoTimer);
 
-        if (src && video) {
+        if (video && shuffled.length > 0) {
           phase = "video";
-          video.classList.add("active");
-          video.src = src;
-          video.currentTime = 0;
-          video.onended = () => enterSingleFullscreen();
-          video.onerror = () => enterSingleFullscreen();
-          const p = video.play();
-          if (p && typeof p.catch === "function") {
-            p.catch(() => {
-              videoTimer = setTimeout(enterSingleFullscreen, 1400);
-            });
-          }
+          playCandidateVideo(video, shuffled, 0);
         } else {
           enterSingleFullscreen();
         }
@@ -1220,23 +934,18 @@
         void hero.offsetWidth;
         hero.style.animation = "";
 
-        const imgSrc = `./jpg_cards/${encodeURIComponent(card.name)}.jpg`;
+        const imgSrc = getCardImageSrc(card.name);
         const colorVar = `var(--${card.rarity.toLowerCase()})`;
 
         hero.innerHTML = `
-          ${imgSrc
-            ? `<img class="hero-img" src="${imgSrc}" alt="${esc(card.name)}" />`
-            : `<div class="hero-img" style="display:flex;align-items:center;justify-content:center;font-weight:900;font-size:32px;color:${colorVar}">${card.rarity}</div>`
-          }
+          <img class="hero-img" src="${imgSrc}" alt="${esc(card.name)}">
           <div class="hero-rarity" style="color:${colorVar}">${card.rarity}</div>
           <div class="hero-name" style="color:${colorVar}">${esc(card.name)}</div>
         `;
 
-        if (currentIndex < pulls.length - 1) {
-          hint.textContent = "画面をタップして次のカードへ";
-        } else {
-          hint.textContent = "画面をタップして結果を見る";
-        }
+        hint.textContent = currentIndex < pulls.length - 1
+          ? "画面をタップして次のカードへ"
+          : "画面をタップして結果を見る";
       }
 
       function advanceSingle() {
@@ -1262,15 +971,12 @@
         grid.innerHTML = "";
 
         pulls.forEach((card) => {
-          const imgSrc = `./jpg_cards/${encodeURIComponent(card.name)}.jpg`;
+          const imgSrc = getCardImageSrc(card.name);
           const colorVar = `var(--${card.rarity.toLowerCase()})`;
           const el = document.createElement("div");
           el.className = `sum-card ${card.rarity}`;
           el.innerHTML = `
-            ${imgSrc
-              ? `<img class="sum-img" src="${imgSrc}" alt="${esc(card.name)}" />`
-              : `<div class="sum-img" style="display:flex;align-items:center;justify-content:center;font-weight:900;font-size:15px;color:${colorVar}">${card.rarity}</div>`
-            }
+            <img class="sum-img" src="${imgSrc}" alt="${esc(card.name)}">
             <div class="sum-label" style="color:${colorVar}">[${card.rarity}] ${esc(card.name)}</div>
           `;
           grid.appendChild(el);
@@ -1278,108 +984,6 @@
 
         inlineBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
         pullLogs();
-      }
-
-      function openDBSafe(cb) {
-        if (typeof indexedDB === "undefined") { cb(null); return; }
-        try {
-          const req = indexedDB.open(DB_NAME, 1);
-          req.onupgradeneeded = () => {
-            const db = req.result;
-            if (!db.objectStoreNames.contains(STORE_NAME)) db.createObjectStore(STORE_NAME);
-          };
-          req.onsuccess = () => cb(req.result);
-          req.onerror = () => cb(null);
-        } catch { cb(null); }
-      }
-
-      function saveMediaSafe(key, value) {
-        openDBSafe((db) => {
-          if (!db) return;
-          try {
-            const tx = db.transaction(STORE_NAME, "readwrite");
-            tx.objectStore(STORE_NAME).put(value, key);
-          } catch {}
-        });
-      }
-
-      function loadMediaSafe(key, cb) {
-        openDBSafe((db) => {
-          if (!db) { cb(null); return; }
-          try {
-            const tx = db.transaction(STORE_NAME, "readonly");
-            const req = tx.objectStore(STORE_NAME).get(key);
-            req.onsuccess = () => cb(req.result);
-            req.onerror = () => cb(null);
-          } catch { cb(null); }
-        });
-      }
-
-      function refreshMediaStatus() {
-        const byR = mediaData.videosByRarity || { SSR: [], SR: [], R: [] };
-        const ssrEl = document.getElementById("videoStatusSSR");
-        const srEl = document.getElementById("videoStatusSR");
-        const rEl = document.getElementById("videoStatusR");
-        const iEl = document.getElementById("imageStatus");
-        if (ssrEl) ssrEl.textContent = `保存済み: ${(byR.SSR || []).length}本`;
-        if (srEl) srEl.textContent = `保存済み: ${(byR.SR || []).length}本`;
-        if (rEl) rEl.textContent = `保存済み: ${(byR.R || []).length}本`;
-        if (iEl) iEl.textContent = `保存済み画像: ${Object.keys(mediaData.images || {}).length}枚`;
-      }
-
-      function initMedia() {
-        loadMediaSafe("videosByRarity", (v) => {
-          if (v && typeof v === "object") {
-            const hasSaved = (v.SSR && v.SSR.length) || (v.SR && v.SR.length) || (v.R && v.R.length);
-            if (hasSaved || !hasEmbeddedVideos) {
-              mediaData.videosByRarity = Object.assign({ SSR: [], SR: [], R: [] }, v);
-              refreshMediaStatus();
-            }
-          }
-        });
-        loadMediaSafe("images", (img) => {
-          if (img && typeof img === "object" && Object.keys(img).length > 0) {
-            mediaData.images = Object.assign({}, mediaData.images, img);
-            refreshMediaStatus();
-          }
-        });
-        refreshMediaStatus();
-      }
-
-      function readFileDataURL(file, cb) {
-        const reader = new FileReader();
-        reader.onload = () => cb(reader.result);
-        reader.onerror = () => cb(null);
-        reader.readAsDataURL(file);
-      }
-
-      function bindRarityVideoUpload(inputId, clearId, rarity) {
-        const inputEl = document.getElementById(inputId);
-        const clearEl = document.getElementById(clearId);
-        if (inputEl) {
-          inputEl.onchange = (e) => {
-            const files = Array.from(e.target.files || []);
-            files.forEach((f) => {
-              readFileDataURL(f, (url) => {
-                if (!url) return;
-                if (!Array.isArray(mediaData.videosByRarity[rarity])) {
-                  mediaData.videosByRarity[rarity] = [];
-                }
-                mediaData.videosByRarity[rarity].push(url);
-                saveMediaSafe("videosByRarity", mediaData.videosByRarity);
-                refreshMediaStatus();
-              });
-            });
-            inputEl.value = "";
-          };
-        }
-        if (clearEl) {
-          clearEl.onclick = () => {
-            mediaData.videosByRarity[rarity] = [];
-            saveMediaSafe("videosByRarity", mediaData.videosByRarity);
-            refreshMediaStatus();
-          };
-        }
       }
 
       try {
@@ -1392,10 +996,8 @@
         if (Array.isArray(cached)) logs = cached.map(normalizeLogItem).slice(0, 10);
       } catch {}
 
-      loadBundleFromHTML();
-      loadPool();
       renderLogs();
-      initMedia();
+      loadExternalPool();
       pullLogs();
 
       document.getElementById("pull1Btn").onclick = () => runPull(1);
@@ -1414,138 +1016,7 @@
       document.getElementById("closeResultBtn").onclick = () => {
         document.getElementById("resultInlineBox").classList.remove("active");
       };
-
-      document.getElementById("openEditorBtn").onclick = () => {
-        document.getElementById("poolText").value = pool.map(c => `${c.rarity},${c.name}`).join("\n");
-        document.getElementById("editorModal").classList.add("active");
-      };
-      document.getElementById("closeEditorBtn").onclick = () => {
-        document.getElementById("editorModal").classList.remove("active");
-      };
-
-      // カード追加（画像＋レアリティ＋キャラ名を登録しそのまま保持）
-      document.getElementById("newCardImage").onchange = (e) => {
-        const file = e.target.files && e.target.files[0];
-        if (!file) return;
-        const base = file.name.replace(/\.[^.]+$/, "").trim();
-        const nameInput = document.getElementById("newCardName");
-        if (base && nameInput && !nameInput.value.trim()) {
-          nameInput.value = base;
-        }
-        readFileDataURL(file, (url) => {
-          pendingNewCardImage = url || "";
-          const st = document.getElementById("addCardStatus");
-          if (st) st.textContent = pendingNewCardImage ? `画像読み込み完了: ${file.name}` : "画像読み込みに失敗しました";
-        });
-      };
-
-      document.getElementById("addCardSaveBtn").onclick = () => {
-        const rarity = document.getElementById("newCardRarity").value;
-        const nameInput = document.getElementById("newCardName");
-        const name = (nameInput.value || "").trim();
-        if (!name) {
-          alert("キャラ名を入力してください");
-          return;
-        }
-
-        if (pendingNewCardImage) {
-          mediaData.images[name] = pendingNewCardImage;
-          saveMediaSafe("images", mediaData.images);
-          refreshMediaStatus();
-        }
-
-        const exists = pool.some(c => c.rarity === rarity && c.name === name);
-        if (!exists) {
-          pool.unshift({ rarity, name });
-          savePoolToStorage();
-        }
-
-        document.getElementById("poolText").value = pool.map(c => `${c.rarity},${c.name}`).join("\n");
-        nameInput.value = "";
-        pendingNewCardImage = "";
-        document.getElementById("newCardImage").value = "";
-        document.getElementById("addCardStatus").textContent = `[${rarity}] ${name} を追加して保存しました（そのまま維持されます）`;
-      };
-
-      bindRarityVideoUpload("videoInputSSR", "clearVideoSSR", "SSR");
-      bindRarityVideoUpload("videoInputSR", "clearVideoSR", "SR");
-      bindRarityVideoUpload("videoInputR", "clearVideoR", "R");
-
-      document.getElementById("imageInput").onchange = (e) => {
-        const files = Array.from(e.target.files || []);
-        files.forEach((f) => {
-          const base = f.name.replace(/\.[^.]+$/, "").trim();
-          if (!base) return;
-          readFileDataURL(f, (url) => {
-            if (!url) return;
-            mediaData.images[base] = url;
-            saveMediaSafe("images", mediaData.images);
-            refreshMediaStatus();
-          });
-        });
-        e.target.value = "";
-      };
-
-      document.getElementById("clearImageBtn").onclick = () => {
-        mediaData.images = {};
-        saveMediaSafe("images", {});
-        refreshMediaStatus();
-      };
-
-      document.getElementById("savePoolBtn").onclick = () => {
-        const lines = document.getElementById("poolText").value.split(/\r?\n/);
-        const next = [];
-        for (let i = 0; i < lines.length; i++) {
-          const parts = lines[i].split(",");
-          const rarity = (parts[0] || "").trim().toUpperCase();
-          const name = parts.slice(1).join(",").trim();
-          if ((rarity === "SSR" || rarity === "SR" || rarity === "R") && name) {
-            next.push({ rarity, name });
-          }
-        }
-        if (next.length > 0) {
-          pool = next;
-          savePoolToStorage();
-          alert(`排出リストを保存しました（${pool.length}件）`);
-        }
-      };
-
-      document.getElementById("resetPoolBtn").onclick = () => {
-        pool = defaultPool();
-        savePoolToStorage();
-        document.getElementById("poolText").value = pool.map(c => `${c.rarity},${c.name}`).join("\n");
-      };
-
-      document.getElementById("exportBtn").onclick = () => {
-        const clone = document.documentElement.cloneNode(true);
-        const holder = clone.querySelector("#embedded-bundle");
-        if (holder) {
-          holder.textContent = JSON.stringify({
-            pool: pool,
-            videosByRarity: mediaData.videosByRarity,
-            images: mediaData.images
-          });
-        }
-        const blob = new Blob(["<!DOCTYPE html>\n" + clone.outerHTML], { type: "text/html;charset=utf-8" });
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = "index.html";
-        a.click();
-      };
-
-      document.getElementById("openPageBtn").onclick = () => {
-        if (location.protocol === "http:" || location.protocol === "https:") {
-          window.open(location.href, "_blank", "noopener,noreferrer");
-        } else {
-          const blob = new Blob(["<!DOCTYPE html>\n" + document.documentElement.outerHTML], { type: "text/html;charset=utf-8" });
-          window.open(URL.createObjectURL(blob), "_blank", "noopener,noreferrer");
-        }
-      };
     })();
   </script>
-
-
-<script async="" src="/.netlify/scripts/hud?variant=owner-private" data-nf-variant="owner-private" data-netlify-site-id="310e7750-4bb2-48f2-baef-bdff7e5ed130" data-app-host="app.netlify.com"></script>
-<script async="" src="/.netlify/scripts/hud?variant=owner-private" data-nf-variant="owner-private" data-netlify-site-id="310e7750-4bb2-48f2-baef-bdff7e5ed130" data-app-host="app.netlify.com"></script>
-<script async="" src="/.netlify/scripts/hud?variant=owner-private" data-nf-variant="owner-private" data-netlify-site-id="310e7750-4bb2-48f2-baef-bdff7e5ed130" data-app-host="app.netlify.com"></script>
-</body></html>
+</body>
+</html>
