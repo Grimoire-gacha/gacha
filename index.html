@@ -614,6 +614,7 @@
       ];
 
       let pool = FALLBACK_POOL.slice();
+      let poolLoaded = false;
       let logs = [];
       let pulls = [];
       let currentIndex = 0;
@@ -621,7 +622,7 @@
       let videoTimer = null;
 
       function toNFC(s) {
-        return String(s || "").normalize("NFC").trim();
+        return String(s ?? "").normalize("NFC").trim();
       }
 
       function esc(s) {
@@ -634,7 +635,8 @@
 
       function getCardImageSrc(cardName) {
         const cleanName = toNFC(cardName);
-        return `${IMAGE_DIR}/${encodeURIComponent(cleanName)}.jpg`;
+        const dir = toNFC(IMAGE_DIR);
+        return `${dir}/${encodeURIComponent(cleanName + ".jpg")}`;
       }
 
       function formatTime(d) {
@@ -728,7 +730,7 @@
         for (let i = 0; i < list.length; i++) {
           const item = list[i];
           if (!item) continue;
-          const rarity = String(item.rarity || "").trim().toUpperCase();
+          const rarity = toNFC(item.rarity).toUpperCase();
           const name = toNFC(item.name);
           if ((rarity === "SSR" || rarity === "SR" || rarity === "R") && name) {
             out.push({ rarity, name });
@@ -737,7 +739,17 @@
         return out;
       }
 
+      function applyJsFallbackPool() {
+        if (Array.isArray(window.GACHA_CARDS)) {
+          const parsedJs = parsePoolList(window.GACHA_CARDS);
+          if (parsedJs.length > 0) {
+            pool = parsedJs;
+          }
+        }
+      }
+
       async function loadExternalPool() {
+        applyJsFallbackPool();
         try {
           const res = await fetchWithTimeout(`./cards.json?t=${Date.now()}`, { method: "GET" }, 4000);
           if (res.ok) {
@@ -746,17 +758,10 @@
             const parsed = parsePoolList(rawList);
             if (parsed.length > 0) {
               pool = parsed;
-              return;
             }
           }
         } catch {}
-
-        if (Array.isArray(window.GACHA_CARDS)) {
-          const parsedJs = parsePoolList(window.GACHA_CARDS);
-          if (parsedJs.length > 0) {
-            pool = parsedJs;
-          }
-        }
+        poolLoaded = true;
       }
 
       function pullLogs() {
@@ -816,7 +821,11 @@
         return "R";
       }
 
-      function runPull(count) {
+      async function runPull(count) {
+        if (!poolLoaded) {
+          await loadExternalPool();
+        }
+
         const nameInput = document.getElementById("playerName");
         const name = toNFC(nameInput && nameInput.value) || "ゲスト";
         try { localStorage.setItem("gacha_player_v6", name); } catch {}
