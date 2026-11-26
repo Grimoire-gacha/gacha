@@ -620,8 +620,12 @@
       let phase = "idle";
       let videoTimer = null;
 
+      function toNFC(s) {
+        return String(s || "").normalize("NFC").trim();
+      }
+
       function esc(s) {
-        return String(s || "")
+        return toNFC(s)
           .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;")
@@ -629,12 +633,13 @@
       }
 
       function getCardImageSrc(cardName) {
-        return `${IMAGE_DIR}/${encodeURIComponent(String(cardName || "").trim())}.jpg`;
+        const cleanName = toNFC(cardName);
+        return `${IMAGE_DIR}/${encodeURIComponent(cleanName)}.jpg`;
       }
 
       function formatTime(d) {
         const dt = d instanceof Date ? d : new Date(d);
-        if (Number.isNaN(dt.getTime())) return String(d || "");
+        if (Number.isNaN(dt.getTime())) return toNFC(d);
         const mm = String(dt.getMonth() + 1).padStart(2, "0");
         const dd = String(dt.getDate()).padStart(2, "0");
         const hh = String(dt.getHours()).padStart(2, "0");
@@ -647,9 +652,9 @@
           return { rarity: "SR", cardName: "SRキャラ", playerName: "ゲスト", timestampText: "", ts: 0 };
         }
         const rarity = raw.rarity === "SSR" ? "SSR" : "SR";
-        let cardName = String(raw.cardName || "").trim();
-        let playerName = String(raw.playerName || "ゲスト").trim() || "ゲスト";
-        let timeStr = String(raw.timestampText || "").trim();
+        let cardName = toNFC(raw.cardName);
+        let playerName = toNFC(raw.playerName) || "ゲスト";
+        let timeStr = toNFC(raw.timestampText);
 
         if (/GMT[+-]\d{4}|日本標準時|Invalid Date/i.test(cardName)) {
           if (!timeStr) timeStr = formatTime(cardName);
@@ -724,7 +729,7 @@
           const item = list[i];
           if (!item) continue;
           const rarity = String(item.rarity || "").trim().toUpperCase();
-          const name = String(item.name || "").trim();
+          const name = toNFC(item.name);
           if ((rarity === "SSR" || rarity === "SR" || rarity === "R") && name) {
             out.push({ rarity, name });
           }
@@ -813,7 +818,7 @@
 
       function runPull(count) {
         const nameInput = document.getElementById("playerName");
-        const name = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : "ゲスト";
+        const name = toNFC(nameInput && nameInput.value) || "ゲスト";
         try { localStorage.setItem("gacha_player_v6", name); } catch {}
 
         pulls = [];
@@ -828,7 +833,7 @@
             const c = srOrBetter[i];
             const entry = {
               rarity: c.rarity,
-              cardName: c.name,
+              cardName: toNFC(c.name),
               playerName: name,
               timestampText: tsText,
               ts: Date.now()
@@ -864,7 +869,7 @@
           enterSingleFullscreen();
           return;
         }
-        const src = encodeURI(candidates[idx]);
+        const src = encodeURI(toNFC(candidates[idx]));
         video.classList.add("active");
         video.src = src;
         video.currentTime = 0;
@@ -988,7 +993,7 @@
 
       try {
         const savedName = localStorage.getItem("gacha_player_v6");
-        if (savedName) document.getElementById("playerName").value = savedName;
+        if (savedName) document.getElementById("playerName").value = toNFC(savedName);
       } catch {}
 
       try {
