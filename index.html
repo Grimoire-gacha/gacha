@@ -633,11 +633,12 @@
           .replace(/"/g, "&quot;");
       }
 
-      function getCardImageSrc(cardName) {
-        const cleanName = toNFC(cardName);
+            function getCardImageSrc(cardName) {
+        const nfdName = String(cardName ?? "").normalize("NFD").trim();
         const dir = toNFC(IMAGE_DIR);
-        return `${dir}/${encodeURIComponent(cleanName + ".jpg")}`;
+        return `${dir}/${encodeURIComponent(nfdName + ".jpg")}`;
       }
+
 
       function formatTime(d) {
         const dt = d instanceof Date ? d : new Date(d);
